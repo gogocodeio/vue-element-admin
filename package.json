@@ -19,6 +19,7 @@
     "t:element": "gogocode -s ./src -t /Users/fengyu/project/github/gogocode/packages/gogocode-plugin-element/index.js -o ./src"
   },
   "dependencies": {
+    "@element-plus/icons": "^0.0.11",
     "axios": "0.18.1",
     "clipboard": "2.0.4",
     "codemirror": "5.45.0",
@@ -26,7 +27,7 @@
     "driver.js": "0.9.5",
     "dropzone": "5.5.1",
     "echarts": "4.2.1",
-    "element-ui": "2.13.2",
+    "element-plus": "^2.0.2",
     "file-saver": "2.0.1",
     "fuse.js": "3.4.4",
     "js-cookie": "2.2.0",
