@@ -6,7 +6,7 @@
         class="toggle"
         type="checkbox"
         @change="toggleTodo(todo)"
-      >
+      />
       <label @dblclick="editing = true" v-text="todo.text" />
       <button class="destroy" @click="deleteTodo(todo)" />
     </div>
@@ -18,7 +18,7 @@
       @keyup.enter="doneEdit"
       @keyup.esc="cancelEdit"
       @blur="doneEdit"
-    >
+    />
   </li>
 </template>
 
@@ -37,7 +37,7 @@ export default {
   props: {
     todo: {
       type: Object,
-      default: function() {
+      default: function () {
         return {}
       },
     },

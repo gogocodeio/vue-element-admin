@@ -35,7 +35,7 @@ export default {
   props: {
     id: {
       type: String,
-      default: function() {
+      default: function () {
         return (
           'vue-tinymce-' +
           +new Date() +

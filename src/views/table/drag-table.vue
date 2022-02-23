@@ -125,7 +125,7 @@ export default {
       )[0]
       this.sortable = Sortable.create(el, {
         ghostClass: 'sortable-ghost', // Class name for the drop placeholder,
-        setData: function(dataTransfer) {
+        setData: function (dataTransfer) {
           // to avoid Firefox bug
           // Detail see : https://github.com/RubaXa/Sortable/issues/1012
           dataTransfer.setData('Text', '')

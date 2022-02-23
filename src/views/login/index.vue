@@ -63,7 +63,8 @@
         type="primary"
         style="width: 100%; margin-bottom: 30px"
         @click.native.prevent="handleLogin"
-      >Login</el-button>
+        >Login</el-button
+      >
 
       <div style="position: relative">
         <div class="tips">
@@ -88,9 +89,9 @@
     <el-dialog title="Or connect with" :visible.sync="showDialog">
       Can not be simulated on local, so please combine you own business
       simulation! ! !
-      <br>
-      <br>
-      <br>
+      <br />
+      <br />
+      <br />
       <social-sign />
     </el-dialog>
   </div>
@@ -141,7 +142,7 @@ export default {
   },
   watch: {
     $route: {
-      handler: function(route) {
+      handler: function (route) {
         const query = route.query
         if (query) {
           this.redirect = query.redirect

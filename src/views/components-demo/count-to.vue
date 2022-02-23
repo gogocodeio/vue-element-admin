@@ -1,10 +1,9 @@
 <template>
   <div class="components-container">
     <aside>
-      <a
-        href="https://github.com/PanJiaChen/vue-countTo"
-        target="_blank"
-      >countTo-component</a>
+      <a href="https://github.com/PanJiaChen/vue-countTo" target="_blank"
+        >countTo-component</a
+      >
     </aside>
     <count-to
       ref="example"
@@ -19,64 +18,50 @@
       class="example"
     />
     <div style="margin-left: 25%; margin-top: 40px">
-      <label
-        class="label"
-        for="startValInput"
-      >startVal:
+      <label class="label" for="startValInput"
+        >startVal:
         <input
           v-model.number="setStartVal"
           type="number"
           name="startValInput"
-        >
+        />
       </label>
-      <label
-        class="label"
-        for="endValInput"
-      >endVal:
-        <input v-model.number="setEndVal" type="number" name="endVaInput">
+      <label class="label" for="endValInput"
+        >endVal:
+        <input v-model.number="setEndVal" type="number" name="endVaInput" />
       </label>
-      <label
-        class="label"
-        for="durationInput"
-      >duration:
+      <label class="label" for="durationInput"
+        >duration:
         <input
           v-model.number="setDuration"
           type="number"
           name="durationInput"
-        >
+        />
       </label>
       <div class="startBtn example-btn" @click="start">Start</div>
       <div class="pause-resume-btn example-btn" @click="pauseResume">
         pause/resume
       </div>
-      <br>
-      <label
-        class="label"
-        for="decimalsInput"
-      >decimals:
+      <br />
+      <label class="label" for="decimalsInput"
+        >decimals:
         <input
           v-model.number="setDecimals"
           type="number"
           name="decimalsInput"
-        >
+        />
       </label>
-      <label
-        class="label"
-        for="separatorInput"
-      >separator:
-        <input v-model="setSeparator" name="separatorInput">
+      <label class="label" for="separatorInput"
+        >separator:
+        <input v-model="setSeparator" name="separatorInput" />
       </label>
-      <label
-        class="label"
-        for="prefixInput"
-      >prefix:
-        <input v-model="setPrefix" name="prefixInput">
+      <label class="label" for="prefixInput"
+        >prefix:
+        <input v-model="setPrefix" name="prefixInput" />
       </label>
-      <label
-        class="label"
-        for="suffixInput"
-      >suffix:
-        <input v-model="setSuffix" name="suffixInput">
+      <label class="label" for="suffixInput"
+        >suffix:
+        <input v-model="setSuffix" name="suffixInput" />
       </label>
     </div>
     <aside>

@@ -5,7 +5,7 @@
  * @param  {[Object]} arg_opts [description]
  * @return {[bollean]}          [description]
  */
-export default function(e, arg_opts) {
+export default function (e, arg_opts) {
   var opts = Object.assign(
     {
       ele: e.target, // 波纹作用元素

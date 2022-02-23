@@ -6,7 +6,8 @@
       type="primary"
       icon="el-icon-document"
       @click="handleDownload"
-    >Export</el-button>
+      >Export</el-button
+    >
 
     <el-table
       ref="multipleTable"

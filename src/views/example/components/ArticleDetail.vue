@@ -114,10 +114,9 @@
             autosize
             placeholder="Please enter the content"
           />
-          <span
-            v-show="contentShortLength"
-            class="word-counter"
-          >{{ contentShortLength }}words</span>
+          <span v-show="contentShortLength" class="word-counter"
+            >{{ contentShortLength }}words</span
+          >
         </el-form-item>
 
         <el-form-item prop="content" style="margin-bottom: 30px">

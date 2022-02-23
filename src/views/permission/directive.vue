@@ -54,7 +54,7 @@
         In some cases, using v-permission will have no effect. For example:
         Element-UI's Tab component or el-table-column and other scenes that
         dynamically render dom. You can only do this with v-if.
-        <br>
+        <br />
         e.g.
       </aside>
 

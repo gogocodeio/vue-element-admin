@@ -29,7 +29,7 @@
             ref="fileinput"
             type="file"
             @change="handleChange"
-          >
+          />
         </div>
         <div v-show="hasError" class="vicp-error">
           <i class="vicp-icon2" />
@@ -65,7 +65,7 @@
                 @mousemove="imgMove"
                 @mouseup="createImg"
                 @mouseout="createImg"
-              >
+              />
               <div
                 :style="sourceImgShadeStyle"
                 class="vicp-img-shade vicp-img-shade-1"
@@ -84,7 +84,7 @@
                 min="0"
                 max="100"
                 @input="zoomChange"
-              >
+              />
               <i
                 class="vicp-icon5"
                 @mousedown="startZoomSub"
@@ -104,25 +104,27 @@
                 @mousedown="startRotateLeft"
                 @mouseout="endRotate"
                 @mouseup="endRotate"
-              >↺</i>
+                >↺</i
+              >
               <i
                 @mousedown="startRotateRight"
                 @mouseout="endRotate"
                 @mouseup="endRotate"
-              >↻</i>
+                >↻</i
+              >
             </div>
           </div>
           <div v-show="true" class="vicp-crop-right">
             <div class="vicp-preview">
               <div v-if="!noSquare" class="vicp-preview-item">
-                <img :src="createImgUrl" :style="previewStyle">
+                <img :src="createImgUrl" :style="previewStyle" />
                 <span>{{ lang.preview }}</span>
               </div>
               <div
                 v-if="!noCircle"
                 class="vicp-preview-item vicp-preview-item-circle"
               >
-                <img :src="createImgUrl" :style="previewStyle">
+                <img :src="createImgUrl" :style="previewStyle" />
                 <span>{{ lang.preview }}</span>
               </div>
             </div>
@@ -134,7 +136,8 @@
             class="vicp-operate-btn"
             @click="prepareUpload"
             @mousedown="ripple"
-          >{{ lang.btn.save }}</a>
+            >{{ lang.btn.save }}</a
+          >
         </div>
       </div>
 
@@ -633,7 +636,7 @@ export default {
         if (scale.rotateRight) {
           const degree = ++scale.degree
           this.createImg(degree)
-          setTimeout(function() {
+          setTimeout(function () {
             rotate()
           }, 60)
         }
@@ -648,7 +651,7 @@ export default {
         if (scale.rotateLeft) {
           const degree = --scale.degree
           this.createImg(degree)
-          setTimeout(function() {
+          setTimeout(function () {
             rotate()
           }, 60)
         }
@@ -669,7 +672,7 @@ export default {
         if (scale.zoomAddOn) {
           const range = scale.range >= 100 ? 100 : ++scale.range
           this.zoomImg(range)
-          setTimeout(function() {
+          setTimeout(function () {
             zoom()
           }, 60)
         }
@@ -688,7 +691,7 @@ export default {
         if (scale.zoomSubOn) {
           const range = scale.range <= 0 ? 0 : --scale.range
           this.zoomImg(range)
-          setTimeout(function() {
+          setTimeout(function () {
             zoom()
           }, 60)
         }

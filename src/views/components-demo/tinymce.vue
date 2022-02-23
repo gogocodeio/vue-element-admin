@@ -10,7 +10,8 @@
         target="_blank"
         class="link-type"
         href="https://panjiachen.github.io/vue-element-admin-site/feature/component/rich-editor.html"
-      >Documentation</a>
+        >Documentation</a
+      >
     </aside>
     <div>
       <tinymce v-model="content" :height="300" />

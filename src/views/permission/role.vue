@@ -20,16 +20,12 @@
       </el-table-column>
       <el-table-column align="center" label="Operations">
         <template slot-scope="scope">
-          <el-button
-            type="primary"
-            size="small"
-            @click="handleEdit(scope)"
-          >Edit</el-button>
-          <el-button
-            type="danger"
-            size="small"
-            @click="handleDelete(scope)"
-          >Delete</el-button>
+          <el-button type="primary" size="small" @click="handleEdit(scope)"
+            >Edit</el-button
+          >
+          <el-button type="danger" size="small" @click="handleDelete(scope)"
+            >Delete</el-button
+          >
         </template>
       </el-table-column>
     </el-table>
@@ -63,10 +59,9 @@
         </el-form-item>
       </el-form>
       <div style="text-align: right">
-        <el-button
-          type="danger"
-          @click="dialogVisible = false"
-        >Cancel</el-button>
+        <el-button type="danger" @click="dialogVisible = false"
+          >Cancel</el-button
+        >
         <el-button type="primary" @click="confirmRole">Confirm</el-button>
       </div>
     </el-dialog>
@@ -198,7 +193,7 @@ export default {
         cancelButtonText: 'Cancel',
         type: 'warning',
       })
-        .then(async() => {
+        .then(async () => {
           await deleteRole(row.key)
           this.rolesList.splice($index, 1)
           this.$message({

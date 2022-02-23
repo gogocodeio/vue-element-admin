@@ -4,28 +4,33 @@
       class="document-btn"
       target="_blank"
       href="https://store.akveo.com/products/vue-java-admin-dashboard-spring?utm_campaign=akveo_store-Vue-Vue_demo%2Fgithub&utm_source=vue_admin&utm_medium=referral&utm_content=demo_English_button"
-    >Java backend integration</a>
+      >Java backend integration</a
+    >
     <a
       class="document-btn"
       target="_blank"
       href="https://panjiachen.github.io/vue-element-admin-site/"
-    >Documentation</a>
+      >Documentation</a
+    >
     <a
       class="document-btn"
       target="_blank"
       href="https://github.com/PanJiaChen/vue-element-admin/"
-    >Github Repository</a>
+      >Github Repository</a
+    >
     <a
       class="document-btn"
       target="_blank"
       href="https://panjiachen.gitee.io/vue-element-admin-site/zh/"
-    >国内文档</a>
+      >国内文档</a
+    >
     <dropdown-menu class="document-btn" :items="articleList" title="系列文章" />
     <a
       class="document-btn"
       target="_blank"
       href="https://panjiachen.github.io/vue-element-admin-site/zh/job/"
-    >内推招聘</a>
+      >内推招聘</a
+    >
   </div>
 </template>
 

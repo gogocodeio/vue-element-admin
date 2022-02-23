@@ -153,7 +153,8 @@
             v-if="row.pageviews"
             class="link-type"
             @click="handleFetchPv(row.pageviews)"
-          >{{ row.pageviews }}</span>
+            >{{ row.pageviews }}</span
+          >
           <span v-else>0</span>
         </template>
       </el-table-column>
@@ -296,10 +297,9 @@
         <el-table-column prop="pv" label="Pv" />
       </el-table>
       <span slot="footer" class="dialog-footer">
-        <el-button
-          type="primary"
-          @click="dialogPvVisible = false"
-        >Confirm</el-button>
+        <el-button type="primary" @click="dialogPvVisible = false"
+          >Confirm</el-button
+        >
       </span>
     </el-dialog>
   </div>
@@ -545,7 +545,7 @@ export default {
         })
       )
     },
-    getSortClass: function(key) {
+    getSortClass: function (key) {
       const sort = this.listQuery.sort
       return sort === `+${key}` ? 'ascending' : 'descending'
     },

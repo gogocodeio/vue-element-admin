@@ -7,7 +7,7 @@
         autocomplete="off"
         placeholder="Todo List"
         @keyup.enter="addTodo"
-      >
+      />
     </header>
     <!-- main section -->
     <section v-show="todos.length" class="main">
@@ -17,7 +17,7 @@
         class="toggle-all"
         type="checkbox"
         @change="toggleAll({ done: !allChecked })"
-      >
+      />
       <label for="toggle-all" />
       <ul class="todo-list">
         <todo
@@ -41,7 +41,8 @@
           <a
             :class="{ selected: visibility === key }"
             @click.prevent="visibility = key"
-          >{{ key | capitalize }}</a>
+            >{{ key | capitalize }}</a
+          >
         </li>
       </ul>
       <!-- <button class="clear-completed" v-show="todos.length > remaining" @click="clearCompleted">

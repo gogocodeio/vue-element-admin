@@ -6,7 +6,8 @@
       <a href="https://jsfiddle.net/" target="_blank"> jsfiddle </a>will not be
       unfamiliar.
       <a href="https://github.com/PanJiaChen/vue-split-pane" target="_blank">
-        Github repository</a>
+        Github repository</a
+      >
     </aside>
     <split-pane split="vertical" @resize="resize">
       <template slot="paneL">
