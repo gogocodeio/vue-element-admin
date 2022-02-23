@@ -72,6 +72,23 @@
     "serve-static": "1.13.2",
     "svgo": "1.2.0"
   },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/vue3-essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "@babel/eslint-parser"
+    },
+    "rules": {
+      "vue/multi-word-component-names": "off",
+      "vue/no-mutating-props": "off"
+    }
+  },
   "browserslist": [
     "> 1%",
     "last 2 versions",
