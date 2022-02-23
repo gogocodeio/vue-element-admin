@@ -14,7 +14,7 @@
     "test:unit": "jest --clearCache && vue-cli-service test:unit",
     "test:ci": "npm run lint && npm run test:unit",
     "t:prettier": "gogocode -s ./src -t /Users/fengyu/project/github/gogocode/packages/gogocode-plugin-prettier/index.js -o ./src",
-    "t:vue": "gogocode -s ./src -t /Users/fengyu/project/github/gogocode/packages/gogocode-prettier-vue/index.js -o ./src",
+    "t:vue": "gogocode -s ./src -t /Users/fengyu/project/github/gogocode/packages/gogocode-plugin-vue/index.js -o ./src",
     "t:element": "gogocode -s ./src -t /Users/fengyu/project/github/gogocode/packages/gogocode-plugin-element/index.js -o ./src"
   },
   "dependencies": {
