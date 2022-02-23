@@ -6,8 +6,12 @@
           Platform<i class="el-icon-caret-bottom el-icon--right" />
         </el-button>
         <el-dropdown-menu slot="dropdown" class="no-border">
-          <el-checkbox-group v-model="platforms" style="padding: 5px 15px;">
-            <el-checkbox v-for="item in platformsOptions" :key="item.key" :label="item.key">
+          <el-checkbox-group v-model="platforms" style="padding: 5px 15px">
+            <el-checkbox
+              v-for="item in platformsOptions"
+              :key="item.key"
+              :label="item.key"
+            >
               {{ item.name }}
             </el-checkbox>
           </el-checkbox-group>
@@ -18,27 +22,33 @@
         <el-button plain>
           Link<i class="el-icon-caret-bottom el-icon--right" />
         </el-button>
-        <el-dropdown-menu slot="dropdown" class="no-padding no-border" style="width:300px">
+        <el-dropdown-menu
+          slot="dropdown"
+          class="no-padding no-border"
+          style="width: 300px"
+        >
           <el-input v-model="url" placeholder="Please enter the content">
-            <template slot="prepend">
-              Url
-            </template>
+            <template slot="prepend"> Url </template>
           </el-input>
         </el-dropdown-menu>
       </el-dropdown>
 
       <div class="time-container">
-        <el-date-picker v-model="time" type="datetime" format="yyyy-MM-dd HH:mm:ss" placeholder="Release time" />
+        <el-date-picker
+          v-model="time"
+          type="datetime"
+          format="yyyy-MM-dd HH:mm:ss"
+          placeholder="Release time"
+        />
       </div>
 
-      <el-button style="margin-left: 10px;" type="success">
-        publish
-      </el-button>
+      <el-button style="margin-left: 10px" type="success"> publish </el-button>
     </sticky>
 
     <div class="components-container">
       <aside>
-        Sticky header, When the page is scrolled to the preset position will be sticky on the top.
+        Sticky header, When the page is scrolled to the preset position will be
+        sticky on the top.
       </aside>
       <div>placeholder</div>
       <div>placeholder</div>

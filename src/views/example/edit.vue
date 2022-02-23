@@ -10,4 +10,3 @@ export default {
   components: { ArticleDetail }
 }
 </script>
-

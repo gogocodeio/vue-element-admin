@@ -1,45 +1,59 @@
 <template>
   <div class="app-container">
     <!-- Note that row-key is necessary to get a correct row order. -->
-    <el-table ref="dragTable" v-loading="listLoading" :data="list" row-key="id" border fit highlight-current-row style="width: 100%">
+    <el-table
+      ref="dragTable"
+      v-loading="listLoading"
+      :data="list"
+      row-key="id"
+      border
+      fit
+      highlight-current-row
+      style="width: 100%"
+    >
       <el-table-column align="center" label="ID" width="65">
-        <template slot-scope="{row}">
+        <template slot-scope="{ row }">
           <span>{{ row.id }}</span>
         </template>
       </el-table-column>
 
       <el-table-column width="180px" align="center" label="Date">
-        <template slot-scope="{row}">
+        <template slot-scope="{ row }">
           <span>{{ row.timestamp | parseTime('{y}-{m}-{d} {h}:{i}') }}</span>
         </template>
       </el-table-column>
 
       <el-table-column min-width="300px" label="Title">
-        <template slot-scope="{row}">
+        <template slot-scope="{ row }">
           <span>{{ row.title }}</span>
         </template>
       </el-table-column>
 
       <el-table-column width="110px" align="center" label="Author">
-        <template slot-scope="{row}">
+        <template slot-scope="{ row }">
           <span>{{ row.author }}</span>
         </template>
       </el-table-column>
 
       <el-table-column width="100px" label="Importance">
-        <template slot-scope="{row}">
-          <svg-icon v-for="n in + row.importance" :key="n" icon-class="star" class="icon-star" />
+        <template slot-scope="{ row }">
+          <svg-icon
+            v-for="n in +row.importance"
+            :key="n"
+            icon-class="star"
+            class="icon-star"
+          />
         </template>
       </el-table-column>
 
       <el-table-column align="center" label="Readings" width="95">
-        <template slot-scope="{row}">
+        <template slot-scope="{ row }">
           <span>{{ row.pageviews }}</span>
         </template>
       </el-table-column>
 
       <el-table-column class-name="status-col" label="Status" width="110">
-        <template slot-scope="{row}">
+        <template slot-scope="{ row }">
           <el-tag :type="row.status | statusFilter">
             {{ row.status }}
           </el-tag>
@@ -52,9 +66,7 @@
         </template>
       </el-table-column>
     </el-table>
-    <div class="show-d">
-      <el-tag>The default order :</el-tag> {{ oldList }}
-    </div>
+    <div class="show-d"><el-tag>The default order :</el-tag> {{ oldList }}</div>
     <div class="show-d">
       <el-tag>The after dragging order :</el-tag> {{ newList }}
     </div>
@@ -101,14 +113,16 @@ export default {
       this.list = data.items
       this.total = data.total
       this.listLoading = false
-      this.oldList = this.list.map(v => v.id)
+      this.oldList = this.list.map((v) => v.id)
       this.newList = this.oldList.slice()
       this.$nextTick(() => {
         this.setSort()
       })
     },
     setSort() {
-      const el = this.$refs.dragTable.$el.querySelectorAll('.el-table__body-wrapper > table > tbody')[0]
+      const el = this.$refs.dragTable.$el.querySelectorAll(
+        '.el-table__body-wrapper > table > tbody'
+      )[0]
       this.sortable = Sortable.create(el, {
         ghostClass: 'sortable-ghost', // Class name for the drop placeholder,
         setData: function(dataTransfer) {
@@ -116,7 +130,7 @@ export default {
           // Detail see : https://github.com/RubaXa/Sortable/issues/1012
           dataTransfer.setData('Text', '')
         },
-        onEnd: evt => {
+        onEnd: (evt) => {
           const targetRow = this.list.splice(evt.oldIndex, 1)[0]
           this.list.splice(evt.newIndex, 0, targetRow)
 
@@ -131,23 +145,23 @@ export default {
 </script>
 
 <style>
-.sortable-ghost{
-  opacity: .8;
-  color: #fff!important;
-  background: #42b983!important;
+.sortable-ghost {
+  opacity: 0.8;
+  color: #fff !important;
+  background: #42b983 !important;
 }
 </style>
 
 <style scoped>
-.icon-star{
-  margin-right:2px;
+.icon-star {
+  margin-right: 2px;
 }
-.drag-handler{
+.drag-handler {
   width: 20px;
   height: 20px;
   cursor: pointer;
 }
-.show-d{
+.show-d {
   margin-top: 15px;
 }
 </style>

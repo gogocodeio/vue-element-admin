@@ -6,7 +6,7 @@ const install = function(Vue) {
 
 if (window.Vue) {
   window['el-height-adaptive-table'] = adaptive
-  Vue.use(install); // eslint-disable-line
+  Vue.use(install) // eslint-disable-line
 }
 
 adaptive.install = install

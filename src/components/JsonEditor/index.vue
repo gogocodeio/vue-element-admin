@@ -41,7 +41,7 @@ export default {
     })
 
     this.jsonEditor.setValue(JSON.stringify(this.value, null, 2))
-    this.jsonEditor.on('change', cm => {
+    this.jsonEditor.on('change', (cm) => {
       this.$emit('changed', cm.getValue())
       this.$emit('input', cm.getValue())
     })
@@ -70,7 +70,7 @@ export default {
     }
 
     .cm-s-rubyblue span.cm-string {
-      color: #F08047;
+      color: #f08047;
     }
   }
 }

@@ -1,24 +1,40 @@
 <template>
   <div class="dndList">
-    <div :style="{width:width1}" class="dndList-list">
+    <div :style="{ width: width1 }" class="dndList-list">
       <h3>{{ list1Title }}</h3>
-      <draggable :set-data="setData" :list="list1" group="article" class="dragArea">
-        <div v-for="element in list1" :key="element.id" class="list-complete-item">
+      <draggable
+        :set-data="setData"
+        :list="list1"
+        group="article"
+        class="dragArea"
+      >
+        <div
+          v-for="element in list1"
+          :key="element.id"
+          class="list-complete-item"
+        >
           <div class="list-complete-item-handle">
             {{ element.id }}[{{ element.author }}] {{ element.title }}
           </div>
-          <div style="position:absolute;right:0px;">
-            <span style="float: right ;margin-top: -20px;margin-right:5px;" @click="deleteEle(element)">
-              <i style="color:#ff4949" class="el-icon-delete" />
+          <div style="position: absolute; right: 0px">
+            <span
+              style="float: right; margin-top: -20px; margin-right: 5px"
+              @click="deleteEle(element)"
+            >
+              <i style="color: #ff4949" class="el-icon-delete" />
             </span>
           </div>
         </div>
       </draggable>
     </div>
-    <div :style="{width:width2}" class="dndList-list">
+    <div :style="{ width: width2 }" class="dndList-list">
       <h3>{{ list2Title }}</h3>
       <draggable :list="list2" group="article" class="dragArea">
-        <div v-for="element in list2" :key="element.id" class="list-complete-item">
+        <div
+          v-for="element in list2"
+          :key="element.id"
+          class="list-complete-item"
+        >
           <div class="list-complete-item-handle2" @click="pushEle(element)">
             {{ element.id }} [{{ element.author }}] {{ element.title }}
           </div>
@@ -66,10 +82,10 @@ export default {
   },
   methods: {
     isNotInList1(v) {
-      return this.list1.every(k => v.id !== k.id)
+      return this.list1.every((k) => v.id !== k.id)
     },
     isNotInList2(v) {
-      return this.list2.every(k => v.id !== k.id)
+      return this.list2.every((k) => v.id !== k.id)
     },
     deleteEle(ele) {
       for (const item of this.list1) {
@@ -109,7 +125,7 @@ export default {
   background: #fff;
   padding-bottom: 40px;
   &:after {
-    content: "";
+    content: '';
     display: table;
     clear: both;
   }
@@ -152,11 +168,11 @@ export default {
 }
 
 .list-complete-item.sortable-chosen {
-  background: #4AB7BD;
+  background: #4ab7bd;
 }
 
 .list-complete-item.sortable-ghost {
-  background: #30B08F;
+  background: #30b08f;
 }
 
 .list-complete-enter,

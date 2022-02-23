@@ -2,11 +2,22 @@
   <section class="todoapp">
     <!-- header -->
     <header class="header">
-      <input class="new-todo" autocomplete="off" placeholder="Todo List" @keyup.enter="addTodo">
+      <input
+        class="new-todo"
+        autocomplete="off"
+        placeholder="Todo List"
+        @keyup.enter="addTodo"
+      >
     </header>
     <!-- main section -->
     <section v-show="todos.length" class="main">
-      <input id="toggle-all" :checked="allChecked" class="toggle-all" type="checkbox" @change="toggleAll({ done: !allChecked })">
+      <input
+        id="toggle-all"
+        :checked="allChecked"
+        class="toggle-all"
+        type="checkbox"
+        @change="toggleAll({ done: !allChecked })"
+      >
       <label for="toggle-all" />
       <ul class="todo-list">
         <todo
@@ -27,7 +38,10 @@
       </span>
       <ul class="filters">
         <li v-for="(val, key) in filters" :key="key">
-          <a :class="{ selected: visibility === key }" @click.prevent="visibility = key">{{ key | capitalize }}</a>
+          <a
+            :class="{ selected: visibility === key }"
+            @click.prevent="visibility = key"
+          >{{ key | capitalize }}</a>
         </li>
       </ul>
       <!-- <button class="clear-completed" v-show="todos.length > remaining" @click="clearCompleted">
@@ -42,9 +56,9 @@ import Todo from './Todo.vue'
 
 const STORAGE_KEY = 'todos'
 const filters = {
-  all: todos => todos,
-  active: todos => todos.filter(todo => !todo.done),
-  completed: todos => todos.filter(todo => todo.done)
+  all: (todos) => todos,
+  active: (todos) => todos.filter((todo) => !todo.done),
+  completed: (todos) => todos.filter((todo) => todo.done)
 }
 const defalutList = [
   { text: 'star this repository', done: false },
@@ -59,8 +73,8 @@ const defalutList = [
 export default {
   components: { Todo },
   filters: {
-    pluralize: (n, w) => n === 1 ? w : w + 's',
-    capitalize: s => s.charAt(0).toUpperCase() + s.slice(1)
+    pluralize: (n, w) => (n === 1 ? w : w + 's'),
+    capitalize: (s) => s.charAt(0).toUpperCase() + s.slice(1)
   },
   data() {
     return {
@@ -72,13 +86,13 @@ export default {
   },
   computed: {
     allChecked() {
-      return this.todos.every(todo => todo.done)
+      return this.todos.every((todo) => todo.done)
     },
     filteredTodos() {
       return filters[this.visibility](this.todos)
     },
     remaining() {
-      return this.todos.filter(todo => !todo.done).length
+      return this.todos.filter((todo) => !todo.done).length
     }
   },
   methods: {
@@ -109,11 +123,11 @@ export default {
       this.setLocalStorage()
     },
     clearCompleted() {
-      this.todos = this.todos.filter(todo => !todo.done)
+      this.todos = this.todos.filter((todo) => !todo.done)
       this.setLocalStorage()
     },
     toggleAll({ done }) {
-      this.todos.forEach(todo => {
+      this.todos.forEach((todo) => {
         todo.done = done
         this.setLocalStorage()
       })
@@ -123,5 +137,5 @@ export default {
 </script>
 
 <style lang="scss">
-  @import './index.scss';
+@import './index.scss';
 </style>
