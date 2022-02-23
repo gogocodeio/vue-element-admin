@@ -15,13 +15,14 @@
     "test:ci": "npm run lint && npm run test:unit",
     "t:prettier": "gogocode -s ./src -t /Users/fengyu/project/github/gogocode/packages/gogocode-plugin-prettier/index.js -o ./src",
     "t:vue": "gogocode -s ./src -t /Users/fengyu/project/github/gogocode/packages/gogocode-plugin-vue/index.js -o ./src",
+    "t:pkg": "gogocode -s package.json -t /Users/fengyu/project/github/gogocode/packages/gogocode-plugin-vue/index.js -o package.json",
     "t:element": "gogocode -s ./src -t /Users/fengyu/project/github/gogocode/packages/gogocode-plugin-element/index.js -o ./src"
   },
   "dependencies": {
     "axios": "0.18.1",
     "clipboard": "2.0.4",
     "codemirror": "5.45.0",
-    "core-js": "3.6.5",
+    "core-js": "^3.8.3",
     "driver.js": "0.9.5",
     "dropzone": "5.5.1",
     "echarts": "4.2.1",
@@ -33,51 +34,49 @@
     "jszip": "3.2.1",
     "normalize.css": "7.0.0",
     "nprogress": "0.2.0",
+    "path-browserify": "^1.0.1",
     "path-to-regexp": "2.4.0",
     "screenfull": "4.2.0",
-    "script-loader": "0.7.2",
     "sortablejs": "1.8.4",
+    "tiny-emitter": "^2.1.0",
     "tui-editor": "1.3.3",
-    "vue": "2.6.10",
+    "vue": "^3.2.13",
     "vue-count-to": "1.0.13",
-    "vue-router": "3.0.2",
+    "vue-router": "^4.0.8",
     "vue-splitpane": "1.0.4",
     "vuedraggable": "2.20.0",
-    "vuex": "3.1.0",
+    "vuex": "^4.0.2",
     "xlsx": "0.14.1"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "4.4.4",
-    "@vue/cli-plugin-eslint": "4.4.4",
-    "@vue/cli-plugin-unit-jest": "4.4.4",
-    "@vue/cli-service": "4.4.4",
+    "@babel/core": "^7.12.16",
+    "@babel/eslint-parser": "^7.12.16",
+    "@vue/cli-plugin-babel": "~5.0.0",
+    "@vue/cli-plugin-eslint": "~5.0.0",
+    "@vue/cli-service": "~5.0.0",
     "@vue/test-utils": "1.0.0-beta.29",
-    "autoprefixer": "9.5.1",
-    "babel-eslint": "10.1.0",
-    "babel-jest": "23.6.0",
     "babel-plugin-dynamic-import-node": "2.3.3",
     "chalk": "2.4.2",
     "chokidar": "2.1.5",
     "connect": "3.6.6",
-    "eslint": "6.7.2",
-    "eslint-plugin-vue": "6.2.2",
-    "html-webpack-plugin": "3.2.0",
+    "eslint": "^7.32.0",
+    "eslint-plugin-vue": "^8.0.3",
     "husky": "1.3.1",
     "lint-staged": "8.1.5",
     "mockjs": "1.0.1-beta3",
     "plop": "2.3.0",
+    "postcss": "^8.4.6",
     "runjs": "4.3.2",
-    "sass": "1.26.2",
-    "sass-loader": "8.0.2",
-    "script-ext-html-webpack-plugin": "2.1.3",
+    "sass": "^1.49.8",
+    "sass-loader": "^12.6.0",
     "serve-static": "1.13.2",
-    "svg-sprite-loader": "4.1.3",
-    "svgo": "1.2.0",
-    "vue-template-compiler": "2.6.10"
+    "svgo": "1.2.0"
   },
   "browserslist": [
     "> 1%",
-    "last 2 versions"
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
   ],
   "bugs": {
     "url": "https://github.com/PanJiaChen/vue-element-admin/issues"
@@ -103,8 +102,7 @@
     ]
   },
   "husky": {
-    "hooks": {
-    }
+    "hooks": {}
   },
   "repository": {
     "type": "git",
