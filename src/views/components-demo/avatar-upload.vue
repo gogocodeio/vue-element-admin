@@ -34,6 +34,7 @@
 </template>
 
 <script>
+import * as Vue from 'vue'
 import ImageCropper from '@/components/ImageCropper'
 import PanThumb from '@/components/PanThumb'
 

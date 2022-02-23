@@ -1,7 +1,7 @@
 <template>
   <div class="app-container">
     <el-input
-      v-model="filename"
+      v-model:value="filename"
       placeholder="Please enter the file name (default file)"
       style="width: 300px"
       prefix-icon="el-icon-document"
@@ -24,27 +24,27 @@
       highlight-current-row
     >
       <el-table-column align="center" label="ID" width="95">
-        <template slot-scope="scope">
+        <template v-slot="scope">
           {{ scope.$index }}
         </template>
       </el-table-column>
       <el-table-column label="Title">
-        <template slot-scope="scope">
+        <template v-slot="scope">
           {{ scope.row.title }}
         </template>
       </el-table-column>
       <el-table-column label="Author" width="95" align="center">
-        <template slot-scope="scope">
+        <template v-slot="scope">
           <el-tag>{{ scope.row.author }}</el-tag>
         </template>
       </el-table-column>
       <el-table-column label="Readings" width="115" align="center">
-        <template slot-scope="scope">
+        <template v-slot="scope">
           {{ scope.row.pageviews }}
         </template>
       </el-table-column>
       <el-table-column align="center" label="Date" width="220">
-        <template slot-scope="scope">
+        <template v-slot="scope">
           <i class="el-icon-time" />
           <span>{{ scope.row.display_time }}</span>
         </template>
@@ -54,6 +54,7 @@
 </template>
 
 <script>
+import * as Vue from 'vue'
 import { fetchList } from '@/api/article'
 
 export default {

@@ -31,13 +31,14 @@
         />
       </el-col>
     </el-row>
-    <el-dialog :visible.sync="dialogVisible" title="随便看">
+    <el-dialog v-model:visible="dialogVisible" title="随便看">
       <img :src="ewizardClap" class="pan-img" />
     </el-dialog>
   </div>
 </template>
 
 <script>
+import * as Vue from 'vue'
 import errGif from '@/assets/401_images/401.gif'
 
 export default {

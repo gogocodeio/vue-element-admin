@@ -23,7 +23,9 @@
     />
   </div>
 </template>
+
 <script>
+import * as Vue from 'vue'
 import Kanban from '@/components/Kanban'
 
 export default {
@@ -54,6 +56,7 @@ export default {
   },
 }
 </script>
+
 <style lang="scss">
 .board {
   width: 1000px;

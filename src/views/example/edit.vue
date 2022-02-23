@@ -3,6 +3,7 @@
 </template>
 
 <script>
+import * as Vue from 'vue'
 import ArticleDetail from './components/ArticleDetail'
 
 export default {

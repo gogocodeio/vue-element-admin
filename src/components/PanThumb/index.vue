@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import * as Vue from 'vue'
 export default {
   name: 'PanThumb',
   props: {
@@ -47,12 +48,10 @@ export default {
   cursor: default;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
-
 .pan-info-roles-container {
   padding: 20px;
   text-align: center;
 }
-
 .pan-thumb {
   width: 100%;
   height: 100%;
@@ -64,20 +63,6 @@ export default {
   transform-origin: 95% 40%;
   transition: all 0.3s ease-in-out;
 }
-
-/* .pan-thumb:after {
-  content: '';
-  width: 8px;
-  height: 8px;
-  position: absolute;
-  border-radius: 50%;
-  top: 40%;
-  left: 95%;
-  margin: -4px 0 0 -4px;
-  background: radial-gradient(ellipse at center, rgba(14, 14, 14, 1) 0%, rgba(125, 126, 125, 1) 100%);
-  box-shadow: 0 0 1px rgba(255, 255, 255, 0.9);
-} */
-
 .pan-info {
   position: absolute;
   width: inherit;
@@ -86,7 +71,6 @@ export default {
   overflow: hidden;
   box-shadow: inset 0 0 0 5px rgba(0, 0, 0, 0.05);
 }
-
 .pan-info h3 {
   color: #fff;
   text-transform: uppercase;
@@ -99,7 +83,6 @@ export default {
   font-family: 'Open Sans', Arial, sans-serif;
   text-shadow: 0 0 1px #fff, 0 1px 2px rgba(0, 0, 0, 0.3);
 }
-
 .pan-info p {
   color: #fff;
   padding: 10px 5px;
@@ -108,7 +91,6 @@ export default {
   font-size: 12px;
   border-top: 1px solid rgba(255, 255, 255, 0.5);
 }
-
 .pan-info p a {
   display: block;
   color: #333;
@@ -130,15 +112,12 @@ export default {
     background 0.2s linear 0s;
   transform: translateX(60px) rotate(90deg);
 }
-
 .pan-info p a:hover {
   background: rgba(255, 255, 255, 0.5);
 }
-
 .pan-item:hover .pan-thumb {
   transform: rotate(-110deg);
 }
-
 .pan-item:hover .pan-info p a {
   opacity: 1;
   transform: translateX(0px) rotate(0deg);

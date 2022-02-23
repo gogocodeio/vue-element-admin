@@ -24,6 +24,7 @@
 </template>
 
 <script>
+import * as Vue from 'vue'
 import { mapGetters } from 'vuex'
 import Logo from './Logo'
 import SidebarItem from './SidebarItem'

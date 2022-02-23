@@ -1,9 +1,9 @@
 <template>
   <div class="app-container">
-    <el-tabs v-model="activeName">
+    <el-tabs v-model:value="activeName">
       <el-tab-pane label="use clipboard  directly" name="directly">
         <el-input
-          v-model="inputData"
+          v-model:value="inputData"
           placeholder="Please input"
           style="width: 400px; max-width: 100%"
         />
@@ -17,7 +17,7 @@
       </el-tab-pane>
       <el-tab-pane label="use clipboard by v-directive" name="v-directive">
         <el-input
-          v-model="inputData"
+          v-model:value="inputData"
           placeholder="Please input"
           style="width: 400px; max-width: 100%"
         />
@@ -35,6 +35,7 @@
 </template>
 
 <script>
+import * as Vue from 'vue'
 import clip from '@/utils/clipboard' // use clipboard directly
 import clipboard from '@/directive/clipboard/index.js' // use clipboard by v-directive
 

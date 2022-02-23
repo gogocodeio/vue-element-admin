@@ -12,31 +12,33 @@
       style="width: 100%"
     >
       <el-table-column align="center" label="ID" width="65">
-        <template slot-scope="{ row }">
+        <template v-slot="{ row }">
           <span>{{ row.id }}</span>
         </template>
       </el-table-column>
 
       <el-table-column width="180px" align="center" label="Date">
-        <template slot-scope="{ row }">
-          <span>{{ row.timestamp | parseTime('{y}-{m}-{d} {h}:{i}') }}</span>
+        <template v-slot="{ row }">
+          <span>{{
+            $filters.parseTime(row.timestamp, '{y}-{m}-{d} {h}:{i}')
+          }}</span>
         </template>
       </el-table-column>
 
       <el-table-column min-width="300px" label="Title">
-        <template slot-scope="{ row }">
+        <template v-slot="{ row }">
           <span>{{ row.title }}</span>
         </template>
       </el-table-column>
 
       <el-table-column width="110px" align="center" label="Author">
-        <template slot-scope="{ row }">
+        <template v-slot="{ row }">
           <span>{{ row.author }}</span>
         </template>
       </el-table-column>
 
       <el-table-column width="100px" label="Importance">
-        <template slot-scope="{ row }">
+        <template v-slot="{ row }">
           <svg-icon
             v-for="n in +row.importance"
             :key="n"
@@ -47,21 +49,21 @@
       </el-table-column>
 
       <el-table-column align="center" label="Readings" width="95">
-        <template slot-scope="{ row }">
+        <template v-slot="{ row }">
           <span>{{ row.pageviews }}</span>
         </template>
       </el-table-column>
 
       <el-table-column class-name="status-col" label="Status" width="110">
-        <template slot-scope="{ row }">
-          <el-tag :type="row.status | statusFilter">
+        <template v-slot="{ row }">
+          <el-tag :type="statusFilter_filter(row.status)">
             {{ row.status }}
           </el-tag>
         </template>
       </el-table-column>
 
       <el-table-column align="center" label="Drag" width="80">
-        <template slot-scope="{}">
+        <template v-slot="{}">
           <svg-icon class="drag-handler" icon-class="drag" />
         </template>
       </el-table-column>
@@ -74,21 +76,12 @@
 </template>
 
 <script>
+import * as Vue from 'vue'
 import { fetchList } from '@/api/article'
 import Sortable from 'sortablejs'
 
 export default {
   name: 'DragTable',
-  filters: {
-    statusFilter(status) {
-      const statusMap = {
-        published: 'success',
-        draft: 'info',
-        deleted: 'danger',
-      }
-      return statusMap[status]
-    },
-  },
   data() {
     return {
       list: null,
@@ -107,6 +100,14 @@ export default {
     this.getList()
   },
   methods: {
+    statusFilter_filter(status) {
+      const statusMap = {
+        published: 'success',
+        draft: 'info',
+        deleted: 'danger',
+      }
+      return statusMap[status]
+    },
     async getList() {
       this.listLoading = true
       const { data } = await fetchList(this.listQuery)

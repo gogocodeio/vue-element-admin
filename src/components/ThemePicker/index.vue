@@ -1,6 +1,6 @@
 <template>
   <el-color-picker
-    v-model="theme"
+    v-model:value="theme"
     :predefine="[
       '#409EFF',
       '#1890ff',
@@ -17,6 +17,8 @@
 </template>
 
 <script>
+import { $on, $off, $once, $emit } from '../../utils/gogocodeTransfer'
+import * as Vue from 'vue'
 const version = require('element-ui/package.json').version // element-ui version from node_modules
 const ORIGINAL_THEME = '#409EFF' // default color
 
@@ -34,9 +36,12 @@ export default {
   },
   watch: {
     defaultTheme: {
+      deep: true,
+
       handler: function (val, oldVal) {
         this.theme = val
       },
+
       immediate: true,
     },
     async theme(val) {
@@ -102,12 +107,11 @@ export default {
         )
       })
 
-      this.$emit('change', val)
+      $emit(this, 'change', val)
 
       $message.close()
     },
   },
-
   methods: {
     updateStyle(style, oldCluster, newCluster) {
       let newStyle = style
@@ -177,6 +181,7 @@ export default {
       return clusters
     },
   },
+  emits: ['change'],
 }
 </script>
 
@@ -185,13 +190,11 @@ export default {
 .theme-picker-dropdown {
   z-index: 99999 !important;
 }
-
 .theme-picker .el-color-picker__trigger {
   height: 26px !important;
   width: 26px !important;
   padding: 2px;
 }
-
 .theme-picker-dropdown .el-color-dropdown__link-btn {
   display: none;
 }

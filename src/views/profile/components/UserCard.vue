@@ -1,8 +1,10 @@
 <template>
   <el-card style="margin-bottom: 20px">
-    <div slot="header" class="clearfix">
-      <span>About me</span>
-    </div>
+    <template v-slot:header>
+      <div class="clearfix">
+        <span>About me</span>
+      </div>
+    </template>
 
     <div class="user-profile">
       <div class="box-center">
@@ -19,7 +21,7 @@
       <div class="box-center">
         <div class="user-name text-center">{{ user.name }}</div>
         <div class="user-role text-center text-muted">
-          {{ user.role | uppercaseFirst }}
+          {{ $filters.uppercaseFirst(user.role) }}
         </div>
       </div>
     </div>
@@ -64,6 +66,7 @@
 </template>
 
 <script>
+import * as Vue from 'vue'
 import PanThumb from '@/components/PanThumb'
 
 export default {
@@ -89,11 +92,9 @@ export default {
   margin: 0 auto;
   display: table;
 }
-
 .text-muted {
   color: #777;
 }
-
 .user-profile {
   .user-name {
     font-weight: bold;
@@ -121,11 +122,9 @@ export default {
     padding-top: 20px;
   }
 }
-
 .user-bio {
   margin-top: 20px;
   color: #606266;
-
   span {
     padding-left: 4px;
   }

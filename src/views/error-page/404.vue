@@ -46,6 +46,7 @@
 </template>
 
 <script>
+import * as Vue from 'vue'
 export default {
   name: 'Page404',
   computed: {

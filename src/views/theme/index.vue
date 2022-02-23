@@ -1,18 +1,20 @@
 <template>
   <div class="app-container">
     <el-card class="box-card">
-      <div slot="header">
-        <a
-          class="link-type link-title"
-          target="_blank"
-          href="https://panjiachen.github.io/vue-element-admin-site/guide/advanced/theme.html"
-        >
-          Theme documentation
-        </a>
-      </div>
+      <template v-slot:header>
+        <div>
+          <a
+            class="link-type link-title"
+            target="_blank"
+            href="https://panjiachen.github.io/vue-element-admin-site/guide/advanced/theme.html"
+          >
+            Theme documentation
+          </a>
+        </div>
+      </template>
       <div class="box-item">
         <span class="field-label">Change Theme : </span>
-        <el-switch v-model="theme" />
+        <el-switch v-model:value="theme" />
         <aside style="margin-top: 15px">
           Tips: It is different from the theme-pick on the navbar is two
           different skinning methods, each with different application scenarios.
@@ -52,7 +54,7 @@
     </div>
 
     <div class="block">
-      <el-radio-group v-model="radio">
+      <el-radio-group v-model:value="radio">
         <el-radio :label="3"> Option A </el-radio>
         <el-radio :label="6"> Option B </el-radio>
         <el-radio :label="9"> Option C </el-radio>
@@ -60,12 +62,13 @@
     </div>
 
     <div class="block">
-      <el-slider v-model="slideValue" />
+      <el-slider v-model:value="slideValue" />
     </div>
   </div>
 </template>
 
 <script>
+import * as Vue from 'vue'
 import { toggleClass } from '@/utils'
 import '@/assets/custom-theme/index.css' // the theme changed version element-ui css
 
@@ -102,11 +105,9 @@ export default {
   max-width: 100%;
   margin: 20px auto;
 }
-
 .block {
   padding: 30px 24px;
 }
-
 .tag-item {
   margin-right: 15px;
 }

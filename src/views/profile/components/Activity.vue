@@ -102,6 +102,7 @@
 </template>
 
 <script>
+import * as Vue from 'vue'
 const avatarPrefix = '?imageView2/1/w/80/h/80'
 const carouselPrefix = '?imageView2/2/h/440'
 
@@ -190,12 +191,10 @@ export default {
     }
   }
 }
-
 .box-center {
   margin: 0 auto;
   display: table;
 }
-
 .text-muted {
   color: #777;
 }

@@ -3,27 +3,29 @@
     <el-badge
       :is-dot="true"
       style="line-height: 25px; margin-top: -5px"
-      @click.native="dialogTableVisible = true"
+      @click="dialogTableVisible = true"
     >
       <el-button style="padding: 8px 10px" size="small" type="danger">
         <svg-icon icon-class="bug" />
       </el-button>
     </el-badge>
 
-    <el-dialog :visible.sync="dialogTableVisible" width="80%" append-to-body>
-      <div slot="title">
-        <span style="padding-right: 10px">Error Log</span>
-        <el-button
-          size="mini"
-          type="primary"
-          icon="el-icon-delete"
-          @click="clearAll"
-          >Clear All</el-button
-        >
-      </div>
+    <el-dialog v-model:visible="dialogTableVisible" width="80%" append-to-body>
+      <template v-slot:title>
+        <div>
+          <span style="padding-right: 10px">Error Log</span>
+          <el-button
+            size="mini"
+            type="primary"
+            icon="el-icon-delete"
+            @click="clearAll"
+            >Clear All</el-button
+          >
+        </div>
+      </template>
       <el-table :data="errorLogs" border>
         <el-table-column label="Message">
-          <template slot-scope="{ row }">
+          <template v-slot="{ row }">
             <div>
               <span class="message-title">Msg:</span>
               <el-tag type="danger">
@@ -51,7 +53,7 @@
           </template>
         </el-table-column>
         <el-table-column label="Stack">
-          <template slot-scope="scope">
+          <template v-slot="scope">
             {{ scope.row.err.stack }}
           </template>
         </el-table-column>
@@ -61,6 +63,7 @@
 </template>
 
 <script>
+import * as Vue from 'vue'
 export default {
   name: 'ErrorLog',
   data() {

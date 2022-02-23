@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import * as Vue from 'vue'
 import screenfull from 'screenfull'
 
 export default {
@@ -20,7 +21,7 @@ export default {
   mounted() {
     this.init()
   },
-  beforeDestroy() {
+  beforeUnmount() {
     this.destroy()
   },
   methods: {

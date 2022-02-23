@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import * as Vue from 'vue'
 
 import Cookies from 'js-cookie'
 
@@ -33,21 +33,23 @@ if (process.env.NODE_ENV === 'production') {
   mockXHR()
 }
 
-Vue.use(Element, {
+window.$vueApp.use(Element, {
   size: Cookies.get('size') || 'medium', // set element-ui default size
   locale: enLang, // 如果使用中文，无需设置，请删除
 })
 
 // register global utility filters
 Object.keys(filters).forEach((key) => {
-  Vue.filter(key, filters[key])
+  (
+    window.$vueApp.config.globalProperties.$filters ||
+    (window.$vueApp.config.globalProperties.$filters = {})
+  ).key = filters[key]
 })
 
-Vue.config.productionTip = false
-
-new Vue({
-  el: '#app',
-  router,
-  store,
-  render: (h) => h(App),
-})
+window.$vueApp = Vue.createApp(App)
+window.$vueApp.config.globalProperties.routerAppend = (path, pathToAppend) => {
+  return path + (path.endsWith('/') ? '' : '/') + pathToAppend
+}
+window.$vueApp.use(store)
+window.$vueApp.use(router)
+window.$vueApp.mount('#app')

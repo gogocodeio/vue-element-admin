@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import * as Vue from 'vue'
 import FixedThead from './components/FixedThead'
 import UnfixedThead from './components/UnfixedThead'
 

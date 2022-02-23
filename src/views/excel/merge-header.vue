@@ -19,32 +19,32 @@
       highlight-current-row
     >
       <el-table-column align="center" label="Id" width="95">
-        <template slot-scope="scope">
+        <template v-slot="scope">
           {{ scope.$index }}
         </template>
       </el-table-column>
       <el-table-column label="Main Information" align="center">
         <el-table-column label="Title">
-          <template slot-scope="scope">
+          <template v-slot="scope">
             {{ scope.row.title }}
           </template>
         </el-table-column>
         <el-table-column label="Author" width="110" align="center">
-          <template slot-scope="scope">
+          <template v-slot="scope">
             <el-tag>{{ scope.row.author }}</el-tag>
           </template>
         </el-table-column>
         <el-table-column label="Readings" width="115" align="center">
-          <template slot-scope="scope">
+          <template v-slot="scope">
             {{ scope.row.pageviews }}
           </template>
         </el-table-column>
       </el-table-column>
       <el-table-column align="center" label="Date" width="220">
-        <template slot-scope="scope">
+        <template v-slot="scope">
           <i class="el-icon-time" />
           <span>{{
-            scope.row.timestamp | parseTime('{y}-{m}-{d} {h}:{i}')
+            $filters.parseTime(scope.row.timestamp, '{y}-{m}-{d} {h}:{i}')
           }}</span>
         </template>
       </el-table-column>
@@ -53,6 +53,7 @@
 </template>
 
 <script>
+import * as Vue from 'vue'
 import { fetchList } from '@/api/article'
 import { parseTime } from '@/utils'
 

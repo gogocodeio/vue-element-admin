@@ -1,8 +1,8 @@
-import Vue from 'vue'
+import * as Vue from 'vue'
 import Clipboard from 'clipboard'
 
 function clipboardSuccess() {
-  Vue.prototype.$message({
+  window.$vueApp.config.globalProperties.$message({
     message: 'Copy successfully',
     type: 'success',
     duration: 1500,
@@ -10,7 +10,7 @@ function clipboardSuccess() {
 }
 
 function clipboardError() {
-  Vue.prototype.$message({
+  window.$vueApp.config.globalProperties.$message({
     message: 'Copy failed',
     type: 'error',
   })

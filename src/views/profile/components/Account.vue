@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import * as Vue from 'vue'
 export default {
   props: {
     user: {

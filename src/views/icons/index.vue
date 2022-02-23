@@ -16,9 +16,11 @@
             @click="handleClipboard(generateIconCode(item), $event)"
           >
             <el-tooltip placement="top">
-              <div slot="content">
-                {{ generateIconCode(item) }}
-              </div>
+              <template v-slot:content>
+                <div>
+                  {{ generateIconCode(item) }}
+                </div>
+              </template>
               <div class="icon-item">
                 <svg-icon :icon-class="item" class-name="disabled" />
                 <span>{{ item }}</span>
@@ -35,9 +37,11 @@
             @click="handleClipboard(generateElementIconCode(item), $event)"
           >
             <el-tooltip placement="top">
-              <div slot="content">
-                {{ generateElementIconCode(item) }}
-              </div>
+              <template v-slot:content>
+                <div>
+                  {{ generateElementIconCode(item) }}
+                </div>
+              </template>
               <div class="icon-item">
                 <i :class="'el-icon-' + item" />
                 <span>{{ item }}</span>
@@ -51,6 +55,7 @@
 </template>
 
 <script>
+import * as Vue from 'vue'
 import clipboard from '@/utils/clipboard'
 import svgIcons from './svg-icons'
 import elementIcons from './element-icons'
@@ -81,7 +86,6 @@ export default {
 .icons-container {
   margin: 10px 20px 0;
   overflow: hidden;
-
   .grid {
     position: relative;
     display: grid;

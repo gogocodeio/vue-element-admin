@@ -16,6 +16,8 @@
 </template>
 
 <script>
+import { $on, $off, $once, $emit } from '../../utils/gogocodeTransfer'
+import * as Vue from 'vue'
 /**
  * docs:
  * https://panjiachen.github.io/vue-element-admin-site/feature/component/rich-editor.html#tinymce
@@ -113,7 +115,7 @@ export default {
   deactivated() {
     this.destroyTinymce()
   },
-  destroyed() {
+  unmounted() {
     this.destroyTinymce()
   },
   methods: {
@@ -155,7 +157,7 @@ export default {
           _this.hasInit = true
           editor.on('NodeChange Change KeyUp SetContent', () => {
             this.hasChange = true
-            this.$emit('input', editor.getContent())
+            $emit(this, 'update:value', editor.getContent())
           })
         },
         setup(editor) {
@@ -226,6 +228,7 @@ export default {
       )
     },
   },
+  emits: ['update:value'],
 }
 </script>
 
@@ -234,7 +237,6 @@ export default {
   position: relative;
   line-height: normal;
 }
-
 .tinymce-container {
   ::v-deep {
     .mce-fullscreen {
@@ -242,24 +244,19 @@ export default {
     }
   }
 }
-
 .tinymce-textarea {
   visibility: hidden;
   z-index: -1;
 }
-
 .editor-custom-btn-container {
   position: absolute;
   right: 4px;
   top: 4px;
-  /*z-index: 2005;*/
 }
-
 .fullscreen .editor-custom-btn-container {
   z-index: 10000;
   position: fixed;
 }
-
 .editor-upload-btn {
   display: inline-block;
 }

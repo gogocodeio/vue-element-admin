@@ -4,21 +4,25 @@
       Platfroms({{ platforms.length }})
       <i class="el-icon-caret-bottom el-icon--right" />
     </el-button>
-    <el-dropdown-menu slot="dropdown" class="no-border">
-      <el-checkbox-group v-model="platforms" style="padding: 5px 15px">
-        <el-checkbox
-          v-for="item in platformsOptions"
-          :key="item.key"
-          :label="item.key"
-        >
-          {{ item.name }}
-        </el-checkbox>
-      </el-checkbox-group>
-    </el-dropdown-menu>
+    <template v-slot:dropdown>
+      <el-dropdown-menu class="no-border">
+        <el-checkbox-group v-model:value="platforms" style="padding: 5px 15px">
+          <el-checkbox
+            v-for="item in platformsOptions"
+            :key="item.key"
+            :label="item.key"
+          >
+            {{ item.name }}
+          </el-checkbox>
+        </el-checkbox-group>
+      </el-dropdown-menu>
+    </template>
   </el-dropdown>
 </template>
 
 <script>
+import { $on, $off, $once, $emit } from '../../../../utils/gogocodeTransfer'
+import * as Vue from 'vue'
 export default {
   props: {
     value: {
@@ -42,9 +46,10 @@ export default {
         return this.value
       },
       set(val) {
-        this.$emit('input', val)
+        $emit(this, 'update:value', val)
       },
     },
   },
+  emits: ['update:value'],
 }
 </script>

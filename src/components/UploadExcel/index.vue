@@ -28,6 +28,7 @@
 </template>
 
 <script>
+import * as Vue from 'vue'
 import XLSX from 'xlsx'
 
 export default {

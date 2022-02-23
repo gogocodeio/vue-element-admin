@@ -2,7 +2,7 @@
   <div style="display: inline-block">
     <label class="radio-label" style="padding-left: 0">Filename: </label>
     <el-input
-      v-model="filename"
+      v-model:value="filename"
       placeholder="Please enter the file name (default excel-list)"
       style="width: 345px"
       prefix-icon="el-icon-document"
@@ -11,6 +11,8 @@
 </template>
 
 <script>
+import { $on, $off, $once, $emit } from '../../../utils/gogocodeTransfer'
+import * as Vue from 'vue'
 export default {
   props: {
     value: {
@@ -24,9 +26,10 @@ export default {
         return this.value
       },
       set(val) {
-        this.$emit('input', val)
+        $emit(this, 'update:value', val)
       },
     },
   },
+  emits: ['update:value'],
 }
 </script>

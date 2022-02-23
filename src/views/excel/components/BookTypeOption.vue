@@ -1,7 +1,7 @@
 <template>
   <div style="display: inline-block">
     <label class="radio-label">Book Type: </label>
-    <el-select v-model="bookType" style="width: 120px">
+    <el-select v-model:value="bookType" style="width: 120px">
       <el-option
         v-for="item in options"
         :key="item"
@@ -13,6 +13,8 @@
 </template>
 
 <script>
+import { $on, $off, $once, $emit } from '../../../utils/gogocodeTransfer'
+import * as Vue from 'vue'
 export default {
   props: {
     value: {
@@ -31,9 +33,10 @@ export default {
         return this.value
       },
       set(val) {
-        this.$emit('input', val)
+        $emit(this, 'update:value', val)
       },
     },
   },
+  emits: ['update:value'],
 }
 </script>

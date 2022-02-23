@@ -26,6 +26,7 @@
 </template>
 
 <script>
+import * as Vue from 'vue'
 import ErrorA from './components/ErrorTestA'
 import ErrorB from './components/ErrorTestB'
 

@@ -9,7 +9,7 @@
     >
       upload
     </el-button>
-    <el-dialog :visible.sync="dialogVisible">
+    <el-dialog v-model:visible="dialogVisible">
       <el-upload
         :multiple="true"
         :file-list="fileList"
@@ -30,8 +30,8 @@
 </template>
 
 <script>
-// import { getToken } from 'api/qiniu'
-
+import { $on, $off, $once, $emit } from '../../../utils/gogocodeTransfer'
+import * as Vue from 'vue'
 export default {
   name: 'EditorSlideUpload',
   props: {
@@ -61,7 +61,7 @@ export default {
         )
         return
       }
-      this.$emit('successCBK', arr)
+      $emit(this, 'successCBK', arr)
       this.listObj = {}
       this.fileList = []
       this.dialogVisible = false
@@ -107,6 +107,7 @@ export default {
       })
     },
   },
+  emits: ['successCBK'],
 }
 </script>
 

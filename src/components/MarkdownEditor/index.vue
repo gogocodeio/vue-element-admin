@@ -3,6 +3,8 @@
 </template>
 
 <script>
+import { $on, $off, $once, $emit } from '../../utils/gogocodeTransfer'
+import * as Vue from 'vue'
 // deps for editor
 import 'codemirror/lib/codemirror.css' // codemirror
 import 'tui-editor/dist/tui-editor.css' // editor ui
@@ -84,7 +86,7 @@ export default {
   mounted() {
     this.initEditor()
   },
-  destroyed() {
+  unmounted() {
     this.destroyEditor()
   },
   methods: {
@@ -97,7 +99,7 @@ export default {
         this.editor.setValue(this.value)
       }
       this.editor.on('change', () => {
-        this.$emit('input', this.editor.getValue())
+        $emit(this, 'update:value', this.editor.getValue())
       })
     },
     destroyEditor() {
@@ -118,5 +120,6 @@ export default {
       return this.editor.getHtml()
     },
   },
+  emits: ['update:value'],
 }
 </script>

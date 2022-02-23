@@ -18,7 +18,7 @@
         </span>
         <el-input
           ref="username"
-          v-model="loginForm.username"
+          v-model:value="loginForm.username"
           placeholder="Username"
           name="username"
           type="text"
@@ -28,7 +28,7 @@
       </el-form-item>
 
       <el-tooltip
-        v-model="capsTooltip"
+        v-model:value="capsTooltip"
         content="Caps lock is On"
         placement="right"
         manual
@@ -40,15 +40,15 @@
           <el-input
             :key="passwordType"
             ref="password"
-            v-model="loginForm.password"
+            v-model:value="loginForm.password"
             :type="passwordType"
             placeholder="Password"
             name="password"
             tabindex="2"
             autocomplete="on"
-            @keyup.native="checkCapslock"
+            @keyup="checkCapslock"
             @blur="capsTooltip = false"
-            @keyup.enter.native="handleLogin"
+            @keyup.enter="handleLogin"
           />
           <span class="show-pwd" @click="showPwd">
             <svg-icon
@@ -62,7 +62,7 @@
         :loading="loading"
         type="primary"
         style="width: 100%; margin-bottom: 30px"
-        @click.native.prevent="handleLogin"
+        @click.prevent="handleLogin"
         >Login</el-button
       >
 
@@ -86,7 +86,7 @@
       </div>
     </el-form>
 
-    <el-dialog title="Or connect with" :visible.sync="showDialog">
+    <el-dialog title="Or connect with" v-model:visible="showDialog">
       Can not be simulated on local, so please combine you own business
       simulation! ! !
       <br />
@@ -98,6 +98,7 @@
 </template>
 
 <script>
+import * as Vue from 'vue'
 import { validUsername } from '@/utils/validate'
 import SocialSign from './components/SocialSignin'
 
@@ -142,6 +143,8 @@ export default {
   },
   watch: {
     $route: {
+      deep: true,
+
       handler: function (route) {
         const query = route.query
         if (query) {
@@ -149,6 +152,7 @@ export default {
           this.otherQuery = this.getOtherQuery(query)
         }
       },
+
       immediate: true,
     },
   },
@@ -162,7 +166,7 @@ export default {
       this.$refs.password.focus()
     }
   },
-  destroyed() {
+  unmounted() {
     // window.removeEventListener('storage', this.afterQRScan)
   },
   methods: {
@@ -233,9 +237,6 @@ export default {
 </script>
 
 <style lang="scss">
-/* 修复input 背景不协调 和光标变色 */
-/* Detail see https://github.com/PanJiaChen/vue-element-admin/pull/927 */
-
 $bg: #283443;
 $light_gray: #fff;
 $cursor: #fff;
@@ -245,8 +246,6 @@ $cursor: #fff;
     color: $cursor;
   }
 }
-
-/* reset element-ui css */
 .login-container {
   .el-input {
     display: inline-block;

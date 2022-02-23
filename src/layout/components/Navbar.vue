@@ -30,35 +30,38 @@
           <img :src="avatar + '?imageView2/1/w/80/h/80'" class="user-avatar" />
           <i class="el-icon-caret-bottom" />
         </div>
-        <el-dropdown-menu slot="dropdown">
-          <router-link to="/profile/index">
-            <el-dropdown-item>Profile</el-dropdown-item>
-          </router-link>
-          <router-link to="/">
-            <el-dropdown-item>Dashboard</el-dropdown-item>
-          </router-link>
-          <a
-            target="_blank"
-            href="https://github.com/PanJiaChen/vue-element-admin/"
-          >
-            <el-dropdown-item>Github</el-dropdown-item>
-          </a>
-          <a
-            target="_blank"
-            href="https://panjiachen.github.io/vue-element-admin-site/#/"
-          >
-            <el-dropdown-item>Docs</el-dropdown-item>
-          </a>
-          <el-dropdown-item divided @click.native="logout">
-            <span style="display: block">Log Out</span>
-          </el-dropdown-item>
-        </el-dropdown-menu>
+        <template v-slot:dropdown>
+          <el-dropdown-menu>
+            <router-link to="/profile/index">
+              <el-dropdown-item>Profile</el-dropdown-item>
+            </router-link>
+            <router-link to="/">
+              <el-dropdown-item>Dashboard</el-dropdown-item>
+            </router-link>
+            <a
+              target="_blank"
+              href="https://github.com/PanJiaChen/vue-element-admin/"
+            >
+              <el-dropdown-item>Github</el-dropdown-item>
+            </a>
+            <a
+              target="_blank"
+              href="https://panjiachen.github.io/vue-element-admin-site/#/"
+            >
+              <el-dropdown-item>Docs</el-dropdown-item>
+            </a>
+            <el-dropdown-item divided @click="logout">
+              <span style="display: block">Log Out</span>
+            </el-dropdown-item>
+          </el-dropdown-menu>
+        </template>
       </el-dropdown>
     </div>
   </div>
 </template>
 
 <script>
+import * as Vue from 'vue'
 import { mapGetters } from 'vuex'
 import Breadcrumb from '@/components/Breadcrumb'
 import Hamburger from '@/components/Hamburger'
@@ -98,7 +101,6 @@ export default {
   position: relative;
   background: #fff;
   box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
-
   .hamburger-container {
     line-height: 46px;
     height: 100%;

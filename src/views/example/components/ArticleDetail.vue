@@ -7,9 +7,9 @@
       class="form-container"
     >
       <sticky :z-index="10" :class-name="'sub-navbar ' + postForm.status">
-        <CommentDropdown v-model="postForm.comment_disabled" />
-        <PlatformDropdown v-model="postForm.platforms" />
-        <SourceUrlDropdown v-model="postForm.source_uri" />
+        <CommentDropdown v-model:value="postForm.comment_disabled" />
+        <PlatformDropdown v-model:value="postForm.platforms" />
+        <SourceUrlDropdown v-model:value="postForm.source_uri" />
         <el-button
           v-loading="loading"
           style="margin-left: 10px"
@@ -30,7 +30,7 @@
           <el-col :span="24">
             <el-form-item style="margin-bottom: 40px" prop="title">
               <MDinput
-                v-model="postForm.title"
+                v-model:value="postForm.title"
                 :maxlength="100"
                 name="name"
                 required
@@ -48,7 +48,7 @@
                     class="postInfo-container-item"
                   >
                     <el-select
-                      v-model="postForm.author"
+                      v-model:value="postForm.author"
                       :remote-method="getRemoteUserList"
                       filterable
                       default-first-option
@@ -72,7 +72,7 @@
                     class="postInfo-container-item"
                   >
                     <el-date-picker
-                      v-model="displayTime"
+                      v-model:value="displayTime"
                       type="datetime"
                       format="yyyy-MM-dd HH:mm:ss"
                       placeholder="Select date and time"
@@ -87,7 +87,7 @@
                     class="postInfo-container-item"
                   >
                     <el-rate
-                      v-model="postForm.importance"
+                      v-model:value="postForm.importance"
                       :max="3"
                       :colors="['#99A9BF', '#F7BA2A', '#FF9900']"
                       :low-threshold="1"
@@ -107,7 +107,7 @@
           label="Summary:"
         >
           <el-input
-            v-model="postForm.content_short"
+            v-model:value="postForm.content_short"
             :rows="1"
             type="textarea"
             class="article-textarea"
@@ -120,11 +120,15 @@
         </el-form-item>
 
         <el-form-item prop="content" style="margin-bottom: 30px">
-          <Tinymce ref="editor" v-model="postForm.content" :height="400" />
+          <Tinymce
+            ref="editor"
+            v-model:value="postForm.content"
+            :height="400"
+          />
         </el-form-item>
 
         <el-form-item prop="image_uri" style="margin-bottom: 30px">
-          <Upload v-model="postForm.image_uri" />
+          <Upload v-model:value="postForm.image_uri" />
         </el-form-item>
       </div>
     </el-form>
@@ -132,6 +136,7 @@
 </template>
 
 <script>
+import * as Vue from 'vue'
 import Tinymce from '@/components/Tinymce'
 import Upload from '@/components/Upload/SingleImage3'
 import MDinput from '@/components/MDinput'
@@ -327,10 +332,8 @@ export default {
 
 <style lang="scss" scoped>
 @import '~@/styles/mixin.scss';
-
 .createPost-container {
   position: relative;
-
   .createPost-main-container {
     padding: 40px 45px 20px 50px;
 
@@ -352,7 +355,6 @@ export default {
     top: 0px;
   }
 }
-
 .article-textarea ::v-deep {
   textarea {
     padding-right: 40px;

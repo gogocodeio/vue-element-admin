@@ -1,7 +1,7 @@
 <template>
   <div class="app-container">
     <div class="filter-container">
-      <el-checkbox-group v-model="checkboxVal">
+      <el-checkbox-group v-model:value="checkboxVal">
         <el-checkbox label="apple"> apple </el-checkbox>
         <el-checkbox label="banana"> banana </el-checkbox>
         <el-checkbox label="orange"> orange </el-checkbox>
@@ -18,7 +18,7 @@
     >
       <el-table-column prop="name" label="fruitName" width="180" />
       <el-table-column v-for="fruit in formThead" :key="fruit" :label="fruit">
-        <template slot-scope="scope">
+        <template v-slot="scope">
           {{ scope.row[fruit] }}
         </template>
       </el-table-column>
@@ -27,6 +27,7 @@
 </template>
 
 <script>
+import * as Vue from 'vue'
 const defaultFormThead = ['apple', 'banana']
 
 export default {

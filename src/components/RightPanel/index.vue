@@ -17,6 +17,7 @@
 </template>
 
 <script>
+import * as Vue from 'vue'
 import { addClass, removeClass } from '@/utils'
 
 export default {
@@ -56,7 +57,7 @@ export default {
   mounted() {
     this.insertToBody()
   },
-  beforeDestroy() {
+  beforeUnmount() {
     const elx = this.$refs.rightPanel
     elx.remove()
   },

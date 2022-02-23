@@ -77,6 +77,7 @@
 </template>
 
 <script>
+import * as Vue from 'vue'
 import countTo from 'vue-count-to'
 
 export default {
@@ -174,7 +175,6 @@ export default {
   background-color: #fff;
   border-color: #d9d9d9;
 }
-
 .example-btn:hover {
   color: #4ab7bd;
   background-color: #fff;
@@ -189,14 +189,12 @@ export default {
   font-size: 80px;
   font-weight: 500;
 }
-
 .label {
   color: #2f4f4f;
   font-size: 16px;
   display: inline-block;
   margin: 15px 30px 15px 0;
 }
-
 input {
   position: relative;
   display: inline-block;
@@ -214,26 +212,22 @@ input {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
-
 .startBtn {
   margin-left: 20px;
   font-size: 20px;
   color: #30b08f;
   background-color: #fff;
 }
-
 .startBtn:hover {
   background-color: #30b08f;
   color: #fff;
   border-color: #30b08f;
 }
-
 .pause-resume-btn {
   font-size: 20px;
   color: #e65d6e;
   background-color: #fff;
 }
-
 .pause-resume-btn:hover {
   background-color: #e65d6e;
   color: #fff;

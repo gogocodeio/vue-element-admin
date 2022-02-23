@@ -8,7 +8,7 @@
 
         <el-col :span="18" :xs="24">
           <el-card>
-            <el-tabs v-model="activeTab">
+            <el-tabs v-model:value="activeTab">
               <el-tab-pane label="Activity" name="activity">
                 <activity />
               </el-tab-pane>
@@ -27,6 +27,7 @@
 </template>
 
 <script>
+import * as Vue from 'vue'
 import { mapGetters } from 'vuex'
 import UserCard from './components/UserCard'
 import Activity from './components/Activity'

@@ -7,7 +7,7 @@
     />
     <el-select
       ref="headerSearchSelect"
-      v-model="search"
+      v-model:value="search"
       :remote-method="querySearch"
       filterable
       default-first-option
@@ -27,6 +27,7 @@
 </template>
 
 <script>
+import * as Vue from 'vue'
 // fuse is a lightweight fuzzy-search module
 // make search results more in line with expectations
 import Fuse from 'fuse.js'
@@ -160,7 +161,6 @@ export default {
 <style lang="scss" scoped>
 .header-search {
   font-size: 0 !important;
-
   .search-icon {
     cursor: pointer;
     font-size: 18px;

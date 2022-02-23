@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import * as Vue from 'vue'
 import UploadExcelComponent from '@/components/UploadExcel/index.vue'
 
 export default {

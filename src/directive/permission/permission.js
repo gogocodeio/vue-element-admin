@@ -22,10 +22,10 @@ function checkPermission(el, binding) {
 }
 
 export default {
-  inserted(el, binding) {
+  mounted(el, binding) {
     checkPermission(el, binding)
   },
-  update(el, binding) {
+  updated(el, binding) {
     checkPermission(el, binding)
   },
 }

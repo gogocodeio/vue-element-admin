@@ -1,7 +1,7 @@
 <template>
   <div style="display: inline-block">
     <label class="radio-label">Cell Auto-Width: </label>
-    <el-radio-group v-model="autoWidth">
+    <el-radio-group v-model:value="autoWidth">
       <el-radio :label="true" border> True </el-radio>
       <el-radio :label="false" border> False </el-radio>
     </el-radio-group>
@@ -9,6 +9,8 @@
 </template>
 
 <script>
+import { $on, $off, $once, $emit } from '../../../utils/gogocodeTransfer'
+import * as Vue from 'vue'
 export default {
   props: {
     value: {
@@ -22,9 +24,10 @@ export default {
         return this.value
       },
       set(val) {
-        this.$emit('input', val)
+        $emit(this, 'update:value', val)
       },
     },
   },
+  emits: ['update:value'],
 }
 </script>

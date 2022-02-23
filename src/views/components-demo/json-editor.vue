@@ -12,12 +12,13 @@
       >.
     </aside>
     <div class="editor-container">
-      <json-editor ref="jsonEditor" v-model="value" />
+      <json-editor ref="jsonEditor" v-model:value="value" />
     </div>
   </div>
 </template>
 
 <script>
+import * as Vue from 'vue'
 import JsonEditor from '@/components/JsonEditor'
 
 const jsonData =

@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import * as Vue from 'vue'
 import DndList from '@/components/DndList'
 import { fetchList } from '@/api/article'
 

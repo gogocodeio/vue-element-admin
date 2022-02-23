@@ -133,6 +133,7 @@
 </template>
 
 <script>
+import * as Vue from 'vue'
 import BackToTop from '@/components/BackToTop'
 
 export default {

@@ -174,6 +174,8 @@
 
 <script>
 'use strict'
+import { $on, $off, $once, $emit } from '../../utils/gogocodeTransfer'
+import * as Vue from 'vue'
 import request from '@/utils/request'
 import language from './utils/language.js'
 import mimes from './utils/mimes.js'
@@ -438,7 +440,7 @@ export default {
     // 绑定按键esc隐藏此插件事件
     document.addEventListener('keyup', this.closeHandler)
   },
-  destroyed() {
+  unmounted() {
     document.removeEventListener('keyup', this.closeHandler)
   },
   methods: {
@@ -449,8 +451,8 @@ export default {
     // 关闭控件
     off() {
       setTimeout(() => {
-        this.$emit('input', false)
-        this.$emit('close')
+        $emit(this, 'update:value', false)
+        $emit(this, 'close')
         if (this.step === 3 && this.loading === 2) {
           this.setStep(1)
         }
@@ -464,7 +466,7 @@ export default {
       }, 200)
     },
     /* 图片选择区域函数绑定
-     ---------------------------------------------------------------*/
+   ---------------------------------------------------------------*/
     preventDefault(e) {
       e.preventDefault()
       return false
@@ -780,7 +782,7 @@ export default {
     },
     prepareUpload() {
       const { url, createImgUrl, field, ki } = this
-      this.$emit('crop-success', createImgUrl, field, ki)
+      $emit(this, 'crop-success', createImgUrl, field, ki)
       if (typeof url === 'string' && url) {
         this.upload()
       } else {
@@ -820,14 +822,14 @@ export default {
       })
         .then((resData) => {
           this.loading = 2
-          this.$emit('crop-upload-success', resData.data)
+          $emit(this, 'crop-upload-success', resData.data)
         })
         .catch((err) => {
           if (this.value) {
             this.loading = 3
             this.hasError = true
             this.errorMsg = lang.fail
-            this.$emit('crop-upload-fail', err, field, ki)
+            $emit(this, 'crop-upload-fail', err, field, ki)
           }
         })
     },
@@ -837,6 +839,13 @@ export default {
       }
     },
   },
+  emits: [
+    'update:value',
+    'crop-success',
+    'crop-upload-success',
+    'crop-upload-fail',
+    'close',
+  ],
 }
 </script>
 
@@ -1310,10 +1319,6 @@ export default {
   -moz-appearance: none;
   appearance: none;
   cursor: pointer;
-  /* 滑块
-               ---------------------------------------------------------------*/
-  /* 轨道
-               ---------------------------------------------------------------*/
 }
 .vue-image-crop-upload
   .vicp-wrap

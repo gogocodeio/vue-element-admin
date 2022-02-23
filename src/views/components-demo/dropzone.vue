@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import * as Vue from 'vue'
 import Dropzone from '@/components/Dropzone'
 
 export default {

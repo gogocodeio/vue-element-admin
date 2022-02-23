@@ -2,14 +2,14 @@
   <div class="app-container">
     <div class="filter-container">
       <el-input
-        v-model="listQuery.title"
+        v-model:value="listQuery.title"
         placeholder="Title"
         style="width: 200px"
         class="filter-item"
-        @keyup.enter.native="handleFilter"
+        @keyup.enter="handleFilter"
       />
       <el-select
-        v-model="listQuery.importance"
+        v-model:value="listQuery.importance"
         placeholder="Imp"
         clearable
         style="width: 90px"
@@ -23,7 +23,7 @@
         />
       </el-select>
       <el-select
-        v-model="listQuery.type"
+        v-model:value="listQuery.type"
         placeholder="Type"
         clearable
         class="filter-item"
@@ -37,7 +37,7 @@
         />
       </el-select>
       <el-select
-        v-model="listQuery.sort"
+        v-model:value="listQuery.sort"
         style="width: 140px"
         class="filter-item"
         @change="handleFilter"
@@ -78,7 +78,7 @@
         Export
       </el-button>
       <el-checkbox
-        v-model="showReviewer"
+        v-model:value="showReviewer"
         class="filter-item"
         style="margin-left: 15px"
         @change="tableKey = tableKey + 1"
@@ -105,25 +105,27 @@
         width="80"
         :class-name="getSortClass('id')"
       >
-        <template slot-scope="{ row }">
+        <template v-slot="{ row }">
           <span>{{ row.id }}</span>
         </template>
       </el-table-column>
       <el-table-column label="Date" width="150px" align="center">
-        <template slot-scope="{ row }">
-          <span>{{ row.timestamp | parseTime('{y}-{m}-{d} {h}:{i}') }}</span>
+        <template v-slot="{ row }">
+          <span>{{
+            $filters.parseTime(row.timestamp, '{y}-{m}-{d} {h}:{i}')
+          }}</span>
         </template>
       </el-table-column>
       <el-table-column label="Title" min-width="150px">
-        <template slot-scope="{ row }">
+        <template v-slot="{ row }">
           <span class="link-type" @click="handleUpdate(row)">{{
             row.title
           }}</span>
-          <el-tag>{{ row.type | typeFilter }}</el-tag>
+          <el-tag>{{ typeFilter_filter(row.type) }}</el-tag>
         </template>
       </el-table-column>
       <el-table-column label="Author" width="110px" align="center">
-        <template slot-scope="{ row }">
+        <template v-slot="{ row }">
           <span>{{ row.author }}</span>
         </template>
       </el-table-column>
@@ -133,12 +135,12 @@
         width="110px"
         align="center"
       >
-        <template slot-scope="{ row }">
+        <template v-slot="{ row }">
           <span style="color: red">{{ row.reviewer }}</span>
         </template>
       </el-table-column>
       <el-table-column label="Imp" width="80px">
-        <template slot-scope="{ row }">
+        <template v-slot="{ row }">
           <svg-icon
             v-for="n in +row.importance"
             :key="n"
@@ -148,7 +150,7 @@
         </template>
       </el-table-column>
       <el-table-column label="Readings" align="center" width="95">
-        <template slot-scope="{ row }">
+        <template v-slot="{ row }">
           <span
             v-if="row.pageviews"
             class="link-type"
@@ -159,8 +161,8 @@
         </template>
       </el-table-column>
       <el-table-column label="Status" class-name="status-col" width="100">
-        <template slot-scope="{ row }">
-          <el-tag :type="row.status | statusFilter">
+        <template v-slot="{ row }">
+          <el-tag :type="statusFilter_filter(row.status)">
             {{ row.status }}
           </el-tag>
         </template>
@@ -171,7 +173,7 @@
         width="230"
         class-name="small-padding fixed-width"
       >
-        <template slot-scope="{ row, $index }">
+        <template v-slot="{ row, $index }">
           <el-button type="primary" size="mini" @click="handleUpdate(row)">
             Edit
           </el-button>
@@ -205,12 +207,15 @@
     <pagination
       v-show="total > 0"
       :total="total"
-      :page.sync="listQuery.page"
-      :limit.sync="listQuery.limit"
+      v-model:page="listQuery.page"
+      v-model:limit="listQuery.limit"
       @pagination="getList"
     />
 
-    <el-dialog :title="textMap[dialogStatus]" :visible.sync="dialogFormVisible">
+    <el-dialog
+      :title="textMap[dialogStatus]"
+      v-model:visible="dialogFormVisible"
+    >
       <el-form
         ref="dataForm"
         :rules="rules"
@@ -221,7 +226,7 @@
       >
         <el-form-item label="Type" prop="type">
           <el-select
-            v-model="temp.type"
+            v-model:value="temp.type"
             class="filter-item"
             placeholder="Please select"
           >
@@ -235,17 +240,17 @@
         </el-form-item>
         <el-form-item label="Date" prop="timestamp">
           <el-date-picker
-            v-model="temp.timestamp"
+            v-model:value="temp.timestamp"
             type="datetime"
             placeholder="Please pick a date"
           />
         </el-form-item>
         <el-form-item label="Title" prop="title">
-          <el-input v-model="temp.title" />
+          <el-input v-model:value="temp.title" />
         </el-form-item>
         <el-form-item label="Status">
           <el-select
-            v-model="temp.status"
+            v-model:value="temp.status"
             class="filter-item"
             placeholder="Please select"
           >
@@ -259,7 +264,7 @@
         </el-form-item>
         <el-form-item label="Imp">
           <el-rate
-            v-model="temp.importance"
+            v-model:value="temp.importance"
             :colors="['#99A9BF', '#F7BA2A', '#FF9900']"
             :max="3"
             style="margin-top: 8px"
@@ -267,25 +272,27 @@
         </el-form-item>
         <el-form-item label="Remark">
           <el-input
-            v-model="temp.remark"
+            v-model:value="temp.remark"
             :autosize="{ minRows: 2, maxRows: 4 }"
             type="textarea"
             placeholder="Please input"
           />
         </el-form-item>
       </el-form>
-      <div slot="footer" class="dialog-footer">
-        <el-button @click="dialogFormVisible = false"> Cancel </el-button>
-        <el-button
-          type="primary"
-          @click="dialogStatus === 'create' ? createData() : updateData()"
-        >
-          Confirm
-        </el-button>
-      </div>
+      <template v-slot:footer>
+        <div class="dialog-footer">
+          <el-button @click="dialogFormVisible = false"> Cancel </el-button>
+          <el-button
+            type="primary"
+            @click="dialogStatus === 'create' ? createData() : updateData()"
+          >
+            Confirm
+          </el-button>
+        </div>
+      </template>
     </el-dialog>
 
-    <el-dialog :visible.sync="dialogPvVisible" title="Reading statistics">
+    <el-dialog v-model:visible="dialogPvVisible" title="Reading statistics">
       <el-table
         :data="pvData"
         border
@@ -296,16 +303,19 @@
         <el-table-column prop="key" label="Channel" />
         <el-table-column prop="pv" label="Pv" />
       </el-table>
-      <span slot="footer" class="dialog-footer">
-        <el-button type="primary" @click="dialogPvVisible = false"
-          >Confirm</el-button
-        >
-      </span>
+      <template v-slot:footer>
+        <span class="dialog-footer">
+          <el-button type="primary" @click="dialogPvVisible = false"
+            >Confirm</el-button
+          >
+        </span>
+      </template>
     </el-dialog>
   </div>
 </template>
 
 <script>
+import * as Vue from 'vue'
 import { fetchList, fetchPv, createArticle, updateArticle } from '@/api/article'
 import waves from '@/directive/waves' // waves directive
 import { parseTime } from '@/utils'
@@ -328,19 +338,6 @@ export default {
   name: 'ComplexTable',
   components: { Pagination },
   directives: { waves },
-  filters: {
-    statusFilter(status) {
-      const statusMap = {
-        published: 'success',
-        draft: 'info',
-        deleted: 'danger',
-      }
-      return statusMap[status]
-    },
-    typeFilter(type) {
-      return calendarTypeKeyValue[type]
-    },
-  },
   data() {
     return {
       tableKey: 0,
@@ -403,6 +400,17 @@ export default {
     this.getList()
   },
   methods: {
+    typeFilter_filter(type) {
+      return calendarTypeKeyValue[type]
+    },
+    statusFilter_filter(status) {
+      const statusMap = {
+        published: 'success',
+        draft: 'info',
+        deleted: 'danger',
+      }
+      return statusMap[status]
+    },
     getList() {
       this.listLoading = true
       fetchList(this.listQuery).then((response) => {

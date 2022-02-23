@@ -3,6 +3,7 @@
 </template>
 
 <script>
+import * as Vue from 'vue'
 import echarts from 'echarts'
 require('echarts/theme/macarons') // echarts theme
 import resize from './mixins/resize'
@@ -49,7 +50,7 @@ export default {
       this.initChart()
     })
   },
-  beforeDestroy() {
+  beforeUnmount() {
     if (!this.chart) {
       return
     }

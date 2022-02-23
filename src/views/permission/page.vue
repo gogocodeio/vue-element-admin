@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import * as Vue from 'vue'
 import SwitchRoles from './components/SwitchRoles'
 
 export default {

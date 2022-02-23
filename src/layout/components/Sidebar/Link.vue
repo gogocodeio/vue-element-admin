@@ -1,10 +1,11 @@
 <template>
-  <component :is="type" v-bind="linkProps(to)">
+  <component v-bind="linkProps(to)" :is="type">
     <slot />
   </component>
 </template>
 
 <script>
+import * as Vue from 'vue'
 import { isExternal } from '@/utils/validate'
 
 export default {

@@ -16,14 +16,14 @@
 
     <div class="editor-container">
       <el-tag class="tag-title"> Basic: </el-tag>
-      <markdown-editor v-model="content1" height="300px" />
+      <markdown-editor v-model:value="content1" height="300px" />
     </div>
 
     <div class="editor-container">
       <el-tag class="tag-title"> Markdown Mode: </el-tag>
       <markdown-editor
         ref="markdownEditor"
-        v-model="content2"
+        v-model:value="content2"
         :options="{ hideModeSwitch: true, previewStyle: 'tab' }"
         height="200px"
       />
@@ -32,7 +32,7 @@
     <div class="editor-container">
       <el-tag class="tag-title"> Customize Toolbar: </el-tag>
       <markdown-editor
-        v-model="content3"
+        v-model:value="content3"
         :options="{ toolbarItems: ['heading', 'bold', 'italic'] }"
       />
     </div>
@@ -46,7 +46,7 @@
       />
       <markdown-editor
         ref="markdownEditor"
-        v-model="content4"
+        v-model:value="content4"
         :language="language"
         height="300px"
       />
@@ -65,6 +65,7 @@
 </template>
 
 <script>
+import * as Vue from 'vue'
 import MarkdownEditor from '@/components/MarkdownEditor'
 
 const content = `

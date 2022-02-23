@@ -45,6 +45,7 @@
 </template>
 
 <script>
+import * as Vue from 'vue'
 import draggable from 'vuedraggable'
 
 export default {
@@ -142,7 +143,6 @@ export default {
     }
   }
 }
-
 .list-complete-item {
   cursor: pointer;
   position: relative;
@@ -152,29 +152,24 @@ export default {
   border: 1px solid #bfcbd9;
   transition: all 1s;
 }
-
 .list-complete-item-handle {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   margin-right: 50px;
 }
-
 .list-complete-item-handle2 {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   margin-right: 20px;
 }
-
 .list-complete-item.sortable-chosen {
   background: #4ab7bd;
 }
-
 .list-complete-item.sortable-ghost {
   background: #30b08f;
 }
-
 .list-complete-enter,
 .list-complete-leave-active {
   opacity: 0;

@@ -16,6 +16,7 @@
 </template>
 
 <script>
+import * as Vue from 'vue'
 // import openWindow from '@/utils/open-window'
 
 export default {

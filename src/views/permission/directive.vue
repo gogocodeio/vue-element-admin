@@ -88,6 +88,7 @@
 </template>
 
 <script>
+import * as Vue from 'vue'
 import permission from '@/directive/permission/index.js' // 权限判断指令
 import checkPermission from '@/utils/permission' // 权限判断函数
 import SwitchRoles from './components/SwitchRoles'

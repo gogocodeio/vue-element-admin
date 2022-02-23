@@ -12,7 +12,11 @@
       title="Tab with keep-alive"
       type="success"
     />
-    <el-tabs v-model="activeName" style="margin-top: 15px" type="border-card">
+    <el-tabs
+      v-model:value="activeName"
+      style="margin-top: 15px"
+      type="border-card"
+    >
       <el-tab-pane
         v-for="item in tabMapOptions"
         :key="item.key"
@@ -32,6 +36,7 @@
 </template>
 
 <script>
+import * as Vue from 'vue'
 import TabPane from './components/TabPane'
 
 export default {

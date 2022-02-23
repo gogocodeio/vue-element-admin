@@ -3,13 +3,15 @@
     ref="scrollContainer"
     :vertical="false"
     class="scroll-container"
-    @wheel.native.prevent="handleScroll"
+    @wheel.prevent="handleScroll"
   >
     <slot />
   </el-scrollbar>
 </template>
 
 <script>
+import { $on, $off, $once, $emit } from '../../../utils/gogocodeTransfer'
+import * as Vue from 'vue'
 const tagAndTagSpacing = 4 // tagAndTagSpacing
 
 export default {
@@ -27,7 +29,7 @@ export default {
   mounted() {
     this.scrollWrapper.addEventListener('scroll', this.emitScroll, true)
   },
-  beforeDestroy() {
+  beforeUnmount() {
     this.scrollWrapper.removeEventListener('scroll', this.emitScroll)
   },
   methods: {
@@ -37,7 +39,7 @@ export default {
       $scrollWrapper.scrollLeft = $scrollWrapper.scrollLeft + eventDelta / 4
     },
     emitScroll() {
-      this.$emit('scroll')
+      $emit(this, 'scroll')
     },
     moveToTarget(currentTag) {
       const $container = this.$refs.scrollContainer.$el
@@ -83,6 +85,7 @@ export default {
       }
     },
   },
+  emits: ['scroll'],
 }
 </script>
 

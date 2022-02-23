@@ -1,7 +1,7 @@
 <template>
   <div class="app-container">
     <el-input
-      v-model="filename"
+      v-model:value="filename"
       placeholder="Please enter the file name (default excel-list)"
       style="width: 350px"
       prefix-icon="el-icon-document"
@@ -34,27 +34,27 @@
     >
       <el-table-column type="selection" align="center" />
       <el-table-column align="center" label="Id" width="95">
-        <template slot-scope="scope">
+        <template v-slot="scope">
           {{ scope.$index }}
         </template>
       </el-table-column>
       <el-table-column label="Title">
-        <template slot-scope="scope">
+        <template v-slot="scope">
           {{ scope.row.title }}
         </template>
       </el-table-column>
       <el-table-column label="Author" width="110" align="center">
-        <template slot-scope="scope">
+        <template v-slot="scope">
           <el-tag>{{ scope.row.author }}</el-tag>
         </template>
       </el-table-column>
       <el-table-column label="Readings" width="115" align="center">
-        <template slot-scope="scope">
+        <template v-slot="scope">
           {{ scope.row.pageviews }}
         </template>
       </el-table-column>
       <el-table-column align="center" label="PDate" width="220">
-        <template slot-scope="scope">
+        <template v-slot="scope">
           <i class="el-icon-time" />
           <span>{{ scope.row.display_time }}</span>
         </template>
@@ -64,6 +64,7 @@
 </template>
 
 <script>
+import * as Vue from 'vue'
 import { fetchList } from '@/api/article'
 
 export default {

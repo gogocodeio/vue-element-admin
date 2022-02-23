@@ -5,6 +5,8 @@
 </template>
 
 <script>
+import { $on, $off, $once, $emit } from '../../utils/gogocodeTransfer'
+import * as Vue from 'vue'
 import Dropzone from 'dropzone'
 import 'dropzone/dist/dropzone.css'
 // import { getToken } from 'api/qiniu';
@@ -161,22 +163,22 @@ export default {
     }
 
     this.dropzone.on('success', (file) => {
-      vm.$emit('dropzone-success', file, vm.dropzone.element)
+      $emit(vm, 'dropzone-success', file, vm.dropzone.element)
     })
     this.dropzone.on('addedfile', (file) => {
-      vm.$emit('dropzone-fileAdded', file)
+      $emit(vm, 'dropzone-fileAdded', file)
     })
     this.dropzone.on('removedfile', (file) => {
-      vm.$emit('dropzone-removedFile', file)
+      $emit(vm, 'dropzone-removedFile', file)
     })
     this.dropzone.on('error', (file, error, xhr) => {
-      vm.$emit('dropzone-error', file, error, xhr)
+      $emit(vm, 'dropzone-error', file, error, xhr)
     })
     this.dropzone.on('successmultiple', (file, error, xhr) => {
-      vm.$emit('dropzone-successmultiple', file, error, xhr)
+      $emit(vm, 'dropzone-successmultiple', file, error, xhr)
     })
   },
-  destroyed() {
+  unmounted() {
     document.removeEventListener('paste', this.pasteImg)
     this.dropzone.destroy()
   },
@@ -214,6 +216,13 @@ export default {
       }
     },
   },
+  emits: [
+    'dropzone-success',
+    'dropzone-fileAdded',
+    'dropzone-removedFile',
+    'dropzone-error',
+    'dropzone-successmultiple',
+  ],
 }
 </script>
 
@@ -225,35 +234,28 @@ export default {
   transition: background-color 0.2s linear;
   padding: 5px;
 }
-
 .dropzone:hover {
   background-color: #f6f6f6;
 }
-
 i {
   color: #ccc;
 }
-
 .dropzone .dz-image img {
   width: 100%;
   height: 100%;
 }
-
 .dropzone input[name='file'] {
   display: none;
 }
-
 .dropzone .dz-preview .dz-image {
   border-radius: 0px;
 }
-
 .dropzone .dz-preview:hover .dz-image img {
   transform: none;
   filter: none;
   width: 100%;
   height: 100%;
 }
-
 .dropzone .dz-preview .dz-details {
   bottom: 0px;
   top: 0px;
@@ -262,21 +264,17 @@ i {
   transition: opacity 0.2s linear;
   text-align: left;
 }
-
 .dropzone .dz-preview .dz-details .dz-filename span,
 .dropzone .dz-preview .dz-details .dz-size span {
   background-color: transparent;
 }
-
 .dropzone .dz-preview .dz-details .dz-filename:not(:hover) span {
   border: none;
 }
-
 .dropzone .dz-preview .dz-details .dz-filename:hover span {
   background-color: transparent;
   border: none;
 }
-
 .dropzone .dz-preview .dz-remove {
   position: absolute;
   z-index: 30;
@@ -293,17 +291,14 @@ i {
   letter-spacing: 1.1px;
   opacity: 0;
 }
-
 .dropzone .dz-preview:hover .dz-remove {
   opacity: 1;
 }
-
 .dropzone .dz-preview .dz-success-mark,
 .dropzone .dz-preview .dz-error-mark {
   margin-left: -40px;
   margin-top: -50px;
 }
-
 .dropzone .dz-preview .dz-success-mark i,
 .dropzone .dz-preview .dz-error-mark i {
   color: white;

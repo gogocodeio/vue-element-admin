@@ -5,11 +5,13 @@
 </template>
 
 <script>
+import { $on, $off, $once, $emit } from '../../utils/gogocodeTransfer'
+import * as Vue from 'vue'
 import CodeMirror from 'codemirror'
 import 'codemirror/addon/lint/lint.css'
 import 'codemirror/lib/codemirror.css'
 import 'codemirror/theme/rubyblue.css'
-require('script-loader!jsonlint')
+// require('script-loader!jsonlint')
 import 'codemirror/mode/javascript/javascript'
 import 'codemirror/addon/lint/lint'
 import 'codemirror/addon/lint/json-lint'
@@ -42,8 +44,8 @@ export default {
 
     this.jsonEditor.setValue(JSON.stringify(this.value, null, 2))
     this.jsonEditor.on('change', (cm) => {
-      this.$emit('changed', cm.getValue())
-      this.$emit('input', cm.getValue())
+      $emit(this, 'changed', cm.getValue())
+      $emit(this, 'update:value', cm.getValue())
     })
   },
   methods: {
@@ -51,6 +53,7 @@ export default {
       return this.jsonEditor.getValue()
     },
   },
+  emits: ['changed', 'update:value'],
 }
 </script>
 
@@ -58,7 +61,6 @@ export default {
 .json-editor {
   height: 100%;
   position: relative;
-
   ::v-deep {
     .CodeMirror {
       height: auto;

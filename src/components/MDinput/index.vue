@@ -114,8 +114,8 @@
 </template>
 
 <script>
-// source:https://github.com/wemake-services/vue-material-input/blob/master/src/components/MaterialInput.vue
-
+import { $on, $off, $once, $emit } from '../../utils/gogocodeTransfer'
+import * as Vue from 'vue'
 export default {
   name: 'MdInput',
   props: {
@@ -172,37 +172,45 @@ export default {
   methods: {
     handleModelInput(event) {
       const value = event.target.value
-      this.$emit('input', value)
+      $emit(this, 'update:value', value)
       if (this.$parent.$options.componentName === 'ElFormItem') {
         if (this.validateEvent) {
-          this.$parent.$emit('el.form.change', [value])
+          $emit(this.$parent, 'el.form.change', [value])
         }
       }
-      this.$emit('change', value)
+      $emit(this, 'change', value)
     },
     handleMdFocus(event) {
       this.focus = true
-      this.$emit('focus', event)
+      $emit(this, 'focus', event)
       if (this.placeholder && this.placeholder !== '') {
         this.fillPlaceHolder = this.placeholder
       }
     },
     handleMdBlur(event) {
       this.focus = false
-      this.$emit('blur', event)
+      $emit(this, 'blur', event)
       this.fillPlaceHolder = null
       if (this.$parent.$options.componentName === 'ElFormItem') {
         if (this.validateEvent) {
-          this.$parent.$emit('el.form.blur', [this.currentValue])
+          $emit(this.$parent, 'el.form.blur', [this.currentValue])
         }
       }
     },
   },
+  emits: [
+    'update:value',
+    'el.form.change',
+    'change',
+    'focus',
+    'blur',
+    'el.form.blur',
+  ],
 }
 </script>
 
 <style lang="scss" scoped>
-// Fonts:
+/*// Fonts:*/
 $font-size-base: 16px;
 $font-size-small: 18px;
 $font-size-smallest: 12px;
@@ -229,17 +237,13 @@ $color-black: black;
   bottom: 0;
   position: absolute;
   transition: $transition;
-}
-
-// Mixins:
+} /*// Mixins:*/
 @mixin slided-top() {
   top: -($font-size-base + $spacer);
   left: 0;
   font-size: $font-size-base;
   font-weight: $font-weight-bold;
-}
-
-// Component:
+} /*// Component:*/
 .material-input__component {
   margin-top: 36px;
   position: relative;
@@ -324,7 +328,6 @@ $color-black: black;
     }
   }
 }
-
 .material-input__component {
   background: $color-white;
   .material-input {

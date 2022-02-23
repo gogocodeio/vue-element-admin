@@ -3,6 +3,7 @@
 </template>
 
 <script>
+import * as Vue from 'vue'
 import echarts from 'echarts'
 import resize from './mixins/resize'
 
@@ -34,7 +35,7 @@ export default {
   mounted() {
     this.initChart()
   },
-  beforeDestroy() {
+  beforeUnmount() {
     if (!this.chart) {
       return
     }

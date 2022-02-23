@@ -1,6 +1,8 @@
 <script>
+import * as Vue from 'vue'
 export default {
   name: 'AuthRedirect',
+
   created() {
     const hash = window.location.search.slice(1)
     if (window.localStorage) {
@@ -8,8 +10,9 @@ export default {
       window.close()
     }
   },
-  render: function (h) {
-    return h() // avoid warning message
+
+  render() {
+    return Vue.h() // avoid warning message
   },
 }
 </script>

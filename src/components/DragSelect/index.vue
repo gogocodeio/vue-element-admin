@@ -1,17 +1,18 @@
 <template>
   <el-select
-    ref="dragSelect"
-    v-model="selectVal"
     v-bind="$attrs"
+    ref="dragSelect"
+    v-model:value="selectVal"
     class="drag-select"
     multiple
-    v-on="$listeners"
   >
     <slot />
   </el-select>
 </template>
 
 <script>
+import { $on, $off, $once, $emit } from '../../utils/gogocodeTransfer'
+import * as Vue from 'vue'
 import Sortable from 'sortablejs'
 
 export default {
@@ -28,7 +29,7 @@ export default {
         return [...this.value]
       },
       set(val) {
-        this.$emit('input', [...val])
+        $emit(this, 'update:value', [...val])
       },
     },
   },
@@ -54,6 +55,7 @@ export default {
       })
     },
   },
+  emits: ['update:value'],
 }
 </script>
 

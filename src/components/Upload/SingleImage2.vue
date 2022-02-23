@@ -24,6 +24,8 @@
 </template>
 
 <script>
+import { $on, $off, $once, $emit } from '../../utils/gogocodeTransfer'
+import * as Vue from 'vue'
 import { getToken } from '@/api/qiniu'
 
 export default {
@@ -50,7 +52,7 @@ export default {
       this.emitInput('')
     },
     emitInput(val) {
-      this.$emit('input', val)
+      $emit(this, 'update:value', val)
     },
     handleImageSuccess() {
       this.emitInput(this.tempUrl)
@@ -73,6 +75,7 @@ export default {
       })
     },
   },
+  emits: ['update:value'],
 }
 </script>
 

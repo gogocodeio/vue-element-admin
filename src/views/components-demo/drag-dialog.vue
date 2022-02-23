@@ -5,11 +5,11 @@
     </el-button>
     <el-dialog
       v-el-drag-dialog
-      :visible.sync="dialogTableVisible"
+      v-model:visible="dialogTableVisible"
       title="Shipping address"
       @dragDialog="handleDrag"
     >
-      <el-select ref="select" v-model="value" placeholder="请选择">
+      <el-select ref="select" v-model:value="value" placeholder="请选择">
         <el-option
           v-for="item in options"
           :key="item.value"
@@ -27,6 +27,7 @@
 </template>
 
 <script>
+import * as Vue from 'vue'
 import elDragDialog from '@/directive/el-drag-dialog' // base on element-ui
 
 export default {

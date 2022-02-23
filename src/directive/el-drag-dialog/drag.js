@@ -1,5 +1,6 @@
+import { $on, $off, $once, $emit } from '../../utils/gogocodeTransfer'
 export default {
-  bind(el, binding, vnode) {
+  beforeMount(el, binding, vnode) {
     const dialogHeaderEl = el.querySelector('.el-dialog__header')
     const dragDom = el.querySelector('.el-dialog')
     dialogHeaderEl.style.cssText += ';cursor:move;'
@@ -65,7 +66,7 @@ export default {
         dragDom.style.cssText += `;left:${left + styL}px;top:${top + styT}px;`
 
         // emit onDrag event
-        vnode.child.$emit('dragDialog')
+        $emit(vnode.child, 'dragDialog')
       }
 
       document.onmouseup = function (e) {
@@ -74,4 +75,5 @@ export default {
       }
     }
   },
+  emits: ['dragDialog'],
 }

@@ -29,17 +29,17 @@ const doResize = (el, binding, vnode) => {
 }
 
 export default {
-  bind(el, binding, vnode) {
+  beforeMount(el, binding, vnode) {
     el.resizeListener = () => {
       doResize(el, binding, vnode)
     }
     // parameter 1 is must be "Element" type
     addResizeListener(window.document.body, el.resizeListener)
   },
-  inserted(el, binding, vnode) {
+  mounted(el, binding, vnode) {
     doResize(el, binding, vnode)
   },
-  unbind(el) {
+  unMounted(el) {
     removeResizeListener(window.document.body, el.resizeListener)
   },
 }
