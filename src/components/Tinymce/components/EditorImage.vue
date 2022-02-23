@@ -37,14 +37,14 @@ export default {
   props: {
     color: {
       type: String,
-      default: '#1890ff'
-    }
+      default: '#1890ff',
+    },
   },
   data() {
     return {
       dialogVisible: false,
       listObj: {},
-      fileList: []
+      fileList: [],
     }
   },
   methods: {
@@ -100,13 +100,13 @@ export default {
             hasSuccess: false,
             uid: file.uid,
             width: this.width,
-            height: this.height
+            height: this.height,
           }
         }
         resolve(true)
       })
-    }
-  }
+    },
+  },
 }
 </script>
 

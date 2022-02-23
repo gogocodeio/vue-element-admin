@@ -35,8 +35,8 @@ export default {
   methods: {
     resize() {
       console.log('resize')
-    }
-  }
+    },
+  },
 }
 </script>
 

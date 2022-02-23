@@ -89,21 +89,21 @@ export default {
       languageTypeList: {
         en: 'en_US',
         zh: 'zh_CN',
-        es: 'es_ES'
-      }
+        es: 'es_ES',
+      },
     }
   },
   computed: {
     language() {
       return this.languageTypeList['en']
-    }
+    },
   },
   methods: {
     getHtml() {
       this.html = this.$refs.markdownEditor.getHtml()
       console.log(this.html)
-    }
-  }
+    },
+  },
 }
 </script>
 

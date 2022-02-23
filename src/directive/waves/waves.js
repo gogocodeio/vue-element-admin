@@ -9,7 +9,7 @@ function handleClick(el, binding) {
       {
         ele: el, // 波纹作用元素
         type: 'hit', // hit 点击位置扩散 center中心点扩展
-        color: 'rgba(0, 0, 0, 0.15)' // 波纹颜色
+        color: 'rgba(0, 0, 0, 0.15)', // 波纹颜色
       },
       customOpts
     )
@@ -55,7 +55,7 @@ function handleClick(el, binding) {
 
   if (!el[context]) {
     el[context] = {
-      removeHandle: handle
+      removeHandle: handle,
     }
   } else {
     el[context].removeHandle = handle
@@ -76,5 +76,5 @@ export default {
     el.removeEventListener('click', el[context].removeHandle, false)
     el[context] = null
     delete el[context]
-  }
+  },
 }

@@ -60,7 +60,7 @@ export default {
   data() {
     return {
       svgIcons,
-      elementIcons
+      elementIcons,
     }
   },
   methods: {
@@ -72,8 +72,8 @@ export default {
     },
     handleClipboard(text, event) {
       clipboard(text, event)
-    }
-  }
+    },
+  },
 }
 </script>
 

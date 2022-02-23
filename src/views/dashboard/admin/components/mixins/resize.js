@@ -4,7 +4,7 @@ export default {
   data() {
     return {
       $_sidebarElm: null,
-      $_resizeHandler: null
+      $_resizeHandler: null,
     }
   },
   mounted() {
@@ -59,6 +59,6 @@ export default {
           'transitionend',
           this.$_sidebarResizeHandler
         )
-    }
-  }
+    },
+  },
 }

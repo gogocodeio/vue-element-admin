@@ -1,6 +1,6 @@
 import {
   addResizeListener,
-  removeResizeListener
+  removeResizeListener,
 } from 'element-ui/src/utils/resize-event'
 
 /**
@@ -41,5 +41,5 @@ export default {
   },
   unbind(el) {
     removeResizeListener(window.document.body, el.resizeListener)
-  }
+  },
 }

@@ -181,83 +181,83 @@ export default {
     // 域，上传文件name，触发事件会带上（如果一个页面多个图片上传控件，可以做区分
     field: {
       type: String,
-      default: 'avatar'
+      default: 'avatar',
     },
     // 原名key，类似于id，触发事件会带上（如果一个页面多个图片上传控件，可以做区分
     ki: {
       type: Number,
-      default: 0
+      default: 0,
     },
     // 显示该控件与否
     value: {
       type: Boolean,
-      default: true
+      default: true,
     },
     // 上传地址
     url: {
       type: String,
-      default: ''
+      default: '',
     },
     // 其他要上传文件附带的数据，对象格式
     params: {
       type: Object,
-      default: null
+      default: null,
     },
     // Add custom headers
     headers: {
       type: Object,
-      default: null
+      default: null,
     },
     // 剪裁图片的宽
     width: {
       type: Number,
-      default: 200
+      default: 200,
     },
     // 剪裁图片的高
     height: {
       type: Number,
-      default: 200
+      default: 200,
     },
     // 不显示旋转功能
     noRotate: {
       type: Boolean,
-      default: true
+      default: true,
     },
     // 不预览圆形图片
     noCircle: {
       type: Boolean,
-      default: false
+      default: false,
     },
     // 不预览方形图片
     noSquare: {
       type: Boolean,
-      default: false
+      default: false,
     },
     // 单文件大小限制
     maxSize: {
       type: Number,
-      default: 10240
+      default: 10240,
     },
     // 语言类型
     langType: {
       type: String,
-      default: 'zh'
+      default: 'zh',
     },
     // 语言包
     langExt: {
       type: Object,
-      default: null
+      default: null,
     },
     // 图片上传格式
     imgFormat: {
       type: String,
-      default: 'png'
+      default: 'png',
     },
     // 是否支持跨域
     withCredentials: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   data() {
     const { imgFormat, langType, langExt, width, height } = this
@@ -305,18 +305,18 @@ export default {
         mX: 0, // 鼠标按下的坐标
         mY: 0,
         x: 0, // scale原图坐标
-        y: 0
+        y: 0,
       },
       // 生成图片预览的容器大小
       previewContainer: {
         width: 100,
-        height: 100
+        height: 100,
       },
       // 原图容器宽高
       sourceImgContainer: {
         // sic
         width: 240,
-        height: 184 // 如果生成图比例与此一致会出现bug，先改成特殊的格式吧，哈哈哈
+        height: 184, // 如果生成图比例与此一致会出现bug，先改成特殊的格式吧，哈哈哈
       },
       // 原图展示属性
       scale: {
@@ -335,8 +335,8 @@ export default {
         minWidth: 0, // 最宽
         minHeight: 0,
         naturalWidth: 0, // 原宽
-        naturalHeight: 0
-      }
+        naturalHeight: 0,
+      },
     }
   },
   computed: {
@@ -344,7 +344,7 @@ export default {
     progressStyle() {
       const { progress } = this
       return {
-        width: progress + '%'
+        width: progress + '%',
       }
     },
     // 原图样式
@@ -361,7 +361,7 @@ export default {
         '-ms-transform': 'rotate(' + scale.degree + 'deg)', // 兼容IE9
         '-moz-transform': 'rotate(' + scale.degree + 'deg)', // 兼容FireFox
         '-webkit-transform': 'rotate(' + scale.degree + 'deg)', // 兼容Safari 和 chrome
-        '-o-transform': 'rotate(' + scale.degree + 'deg)' // 兼容 Opera
+        '-o-transform': 'rotate(' + scale.degree + 'deg)', // 兼容 Opera
       }
     },
     // 原图蒙版属性
@@ -389,7 +389,7 @@ export default {
         x,
         y,
         width: w,
-        height: h
+        height: h,
       }
     },
     // 原图遮罩样式
@@ -403,7 +403,7 @@ export default {
         sim.height === sic.height ? sim.height : (sic.height - sim.height) / 2
       return {
         width: w + 'px',
-        height: h + 'px'
+        height: h + 'px',
       }
     },
     previewStyle() {
@@ -420,16 +420,16 @@ export default {
       }
       return {
         width: w + 'px',
-        height: h + 'px'
+        height: h + 'px',
       }
-    }
+    },
   },
   watch: {
     value(newValue) {
       if (newValue && this.loading !== 1) {
         this.reset()
       }
-    }
+    },
   },
   created() {
     // 绑定按键esc隐藏此插件事件
@@ -529,7 +529,7 @@ export default {
         scale,
         sourceImgUrl,
         sourceImgMasking,
-        lang
+        lang,
       } = this
       const sim = sourceImgMasking
       const img = new Image()
@@ -600,7 +600,7 @@ export default {
       const {
         sourceImgMouseDown: { on, mX, mY, x, y },
         scale,
-        sourceImgMasking
+        sourceImgMasking,
       } = this
       const sim = sourceImgMasking
       const nX = et.screenX
@@ -749,7 +749,7 @@ export default {
         mime,
         sourceImg,
         scale: { x, y, width, height, degree },
-        sourceImgMasking: { scale }
+        sourceImgMasking: { scale },
       } = this
       const canvas = this.$refs.canvas
       const ctx = canvas.getContext('2d')
@@ -813,7 +813,7 @@ export default {
       request({
         url,
         method: 'post',
-        data: fmData
+        data: fmData,
       })
         .then((resData) => {
           this.loading = 2
@@ -832,8 +832,8 @@ export default {
       if (this.value && (e.key === 'Escape' || e.keyCode === 27)) {
         this.off()
       }
-    }
-  }
+    },
+  },
 }
 </script>
 

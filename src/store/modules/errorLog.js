@@ -1,5 +1,5 @@
 const state = {
-  logs: []
+  logs: [],
 }
 
 const mutations = {
@@ -8,7 +8,7 @@ const mutations = {
   },
   CLEAR_ERROR_LOG: (state) => {
     state.logs.splice(0)
-  }
+  },
 }
 
 const actions = {
@@ -17,12 +17,12 @@ const actions = {
   },
   clearErrorLog({ commit }) {
     commit('CLEAR_ERROR_LOG')
-  }
+  },
 }
 
 export default {
   namespaced: true,
   state,
   mutations,
-  actions
+  actions,
 }

@@ -144,7 +144,7 @@ import Warning from './Warning'
 import {
   CommentDropdown,
   PlatformDropdown,
-  SourceUrlDropdown
+  SourceUrlDropdown,
 } from './Dropdown'
 
 const defaultForm = {
@@ -158,7 +158,7 @@ const defaultForm = {
   id: undefined,
   platforms: ['a-platform'],
   comment_disabled: false,
-  importance: 0
+  importance: 0,
 }
 
 export default {
@@ -171,20 +171,20 @@ export default {
     Warning,
     CommentDropdown,
     PlatformDropdown,
-    SourceUrlDropdown
+    SourceUrlDropdown,
   },
   props: {
     isEdit: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   data() {
     const validateRequire = (rule, value, callback) => {
       if (value === '') {
         this.$message({
           message: rule.field + '为必传项',
-          type: 'error'
+          type: 'error',
         })
         callback(new Error(rule.field + '为必传项'))
       } else {
@@ -198,7 +198,7 @@ export default {
         } else {
           this.$message({
             message: '外链url填写不正确',
-            type: 'error'
+            type: 'error',
           })
           callback(new Error('外链url填写不正确'))
         }
@@ -214,9 +214,9 @@ export default {
         image_uri: [{ validator: validateRequire }],
         title: [{ validator: validateRequire }],
         content: [{ validator: validateRequire }],
-        source_uri: [{ validator: validateSourceUri, trigger: 'blur' }]
+        source_uri: [{ validator: validateSourceUri, trigger: 'blur' }],
       },
-      tempRoute: {}
+      tempRoute: {},
     }
   },
   computed: {
@@ -233,8 +233,8 @@ export default {
       },
       set(val) {
         this.postForm.display_time = new Date(val)
-      }
-    }
+      },
+    },
   },
   created() {
     if (this.isEdit) {
@@ -270,7 +270,7 @@ export default {
     setTagsViewTitle() {
       const title = 'Edit Article'
       const route = Object.assign({}, this.tempRoute, {
-        title: `${title}-${this.postForm.id}`
+        title: `${title}-${this.postForm.id}`,
       })
       this.$store.dispatch('tagsView/updateVisitedView', route)
     },
@@ -287,7 +287,7 @@ export default {
             title: '成功',
             message: '发布文章成功',
             type: 'success',
-            duration: 2000
+            duration: 2000,
           })
           this.postForm.status = 'published'
           this.loading = false
@@ -304,7 +304,7 @@ export default {
       ) {
         this.$message({
           message: '请填写必要的标题和内容',
-          type: 'warning'
+          type: 'warning',
         })
         return
       }
@@ -312,7 +312,7 @@ export default {
         message: '保存成功',
         type: 'success',
         showClose: true,
-        duration: 1000
+        duration: 1000,
       })
       this.postForm.status = 'draft'
     },
@@ -321,8 +321,8 @@ export default {
         if (!response.data.items) return
         this.userListOptions = response.data.items.map((v) => v.name)
       })
-    }
-  }
+    },
+  },
 }
 </script>
 

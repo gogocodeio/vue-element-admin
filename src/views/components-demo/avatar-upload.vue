@@ -43,7 +43,7 @@ export default {
     return {
       imagecropperShow: false,
       imagecropperKey: 0,
-      image: 'https://wpimg.wallstcn.com/577965b9-bb9e-4e02-9f0c-095b41417191'
+      image: 'https://wpimg.wallstcn.com/577965b9-bb9e-4e02-9f0c-095b41417191',
     }
   },
   methods: {
@@ -54,8 +54,8 @@ export default {
     },
     close() {
       this.imagecropperShow = false
-    }
-  }
+    },
+  },
 }
 </script>
 

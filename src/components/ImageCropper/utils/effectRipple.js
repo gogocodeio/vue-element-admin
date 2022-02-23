@@ -10,7 +10,7 @@ export default function(e, arg_opts) {
     {
       ele: e.target, // 波纹作用元素
       type: 'hit', // hit点击位置扩散center中心点扩展
-      bgc: 'rgba(0, 0, 0, 0.15)' // 波纹颜色
+      bgc: 'rgba(0, 0, 0, 0.15)', // 波纹颜色
     },
     arg_opts
   )

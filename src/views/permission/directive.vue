@@ -98,15 +98,15 @@ export default {
   directives: { permission },
   data() {
     return {
-      key: 1 // 为了能每次切换权限的时候重新初始化指令
+      key: 1, // 为了能每次切换权限的时候重新初始化指令
     }
   },
   methods: {
     checkPermission,
     handleRolesChange() {
       this.key++
-    }
-  }
+    },
+  },
 }
 </script>
 

@@ -41,12 +41,12 @@ import clipboard from '@/directive/clipboard/index.js' // use clipboard by v-dir
 export default {
   name: 'ClipboardDemo',
   directives: {
-    clipboard
+    clipboard,
   },
   data() {
     return {
       activeName: 'directly',
-      inputData: 'https://github.com/PanJiaChen/vue-element-admin'
+      inputData: 'https://github.com/PanJiaChen/vue-element-admin',
     }
   },
   methods: {
@@ -57,9 +57,9 @@ export default {
       this.$message({
         message: 'Copy successfully',
         type: 'success',
-        duration: 1500
+        duration: 1500,
       })
-    }
-  }
+    },
+  },
 }
 </script>

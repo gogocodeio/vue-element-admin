@@ -122,15 +122,15 @@ export default {
       platformsOptions: [
         { key: 'a-platform', name: 'platformA' },
         { key: 'b-platform', name: 'platformB' },
-        { key: 'c-platform', name: 'platformC' }
+        { key: 'c-platform', name: 'platformC' },
       ],
       pickerOptions: {
         disabledDate(time) {
           return time.getTime() > Date.now()
-        }
-      }
+        },
+      },
     }
-  }
+  },
 }
 </script>
 

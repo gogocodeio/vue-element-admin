@@ -23,8 +23,8 @@ export default {
         this.$store.dispatch('user/changeRoles', val).then(() => {
           this.$emit('change')
         })
-      }
-    }
-  }
+      },
+    },
+  },
 }
 </script>

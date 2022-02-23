@@ -278,7 +278,7 @@ const elementIcons = [
   'potato-strips',
   'lollipop',
   'ice-cream-square',
-  'ice-cream-round'
+  'ice-cream-round',
 ]
 
 export default elementIcons

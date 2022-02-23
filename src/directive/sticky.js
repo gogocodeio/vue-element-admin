@@ -83,7 +83,7 @@ vueSticky.install = (Vue) => {
 
     unbind() {
       window.removeEventListener('scroll', listenAction)
-    }
+    },
   })
 }
 

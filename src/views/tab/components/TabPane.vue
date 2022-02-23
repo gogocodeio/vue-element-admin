@@ -68,16 +68,16 @@ export default {
       const statusMap = {
         published: 'success',
         draft: 'info',
-        deleted: 'danger'
+        deleted: 'danger',
       }
       return statusMap[status]
-    }
+    },
   },
   props: {
     type: {
       type: String,
-      default: 'CN'
-    }
+      default: 'CN',
+    },
   },
   data() {
     return {
@@ -86,9 +86,9 @@ export default {
         page: 1,
         limit: 5,
         type: this.type,
-        sort: '+id'
+        sort: '+id',
       },
-      loading: false
+      loading: false,
     }
   },
   created() {
@@ -102,7 +102,7 @@ export default {
         this.list = response.data.items
         this.loading = false
       })
-    }
-  }
+    },
+  },
 }
 </script>

@@ -73,5 +73,5 @@ export default {
         document.onmouseup = null
       }
     }
-  }
+  },
 }

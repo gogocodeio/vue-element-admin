@@ -27,7 +27,7 @@ if (checkNeed()) {
         err,
         vm,
         info,
-        url: window.location.href
+        url: window.location.href,
       })
       console.error(err, info)
     })

@@ -13,7 +13,7 @@ export default {
   methods: {
     handleRolesChange() {
       this.$router.push({ path: '/permission/index?' + +new Date() })
-    }
-  }
+    },
+  },
 }
 </script>

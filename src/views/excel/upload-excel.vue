@@ -29,7 +29,7 @@ export default {
   data() {
     return {
       tableData: [],
-      tableHeader: []
+      tableHeader: [],
     }
   },
   methods: {
@@ -42,14 +42,14 @@ export default {
 
       this.$message({
         message: 'Please do not upload files larger than 1m in size.',
-        type: 'warning'
+        type: 'warning',
       })
       return false
     },
     handleSuccess({ results, header }) {
       this.tableData = results
       this.tableHeader = header
-    }
-  }
+    },
+  },
 }
 </script>

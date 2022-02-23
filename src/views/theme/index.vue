@@ -79,17 +79,17 @@ export default {
         { name: 'Tag Two', type: 'info' },
         { name: 'Tag Three', type: 'success' },
         { name: 'Tag Four', type: 'warning' },
-        { name: 'Tag Five', type: 'danger' }
+        { name: 'Tag Five', type: 'danger' },
       ],
       slideValue: 50,
-      radio: 3
+      radio: 3,
     }
   },
   watch: {
     theme() {
       toggleClass(document.body, 'custom-theme')
-    }
-  }
+    },
+  },
 }
 </script>
 

@@ -40,13 +40,13 @@ export default {
       options: [],
       searchPool: [],
       show: false,
-      fuse: undefined
+      fuse: undefined,
     }
   },
   computed: {
     routes() {
       return this.$store.getters.permission_routes
-    }
+    },
   },
   watch: {
     routes() {
@@ -61,7 +61,7 @@ export default {
       } else {
         document.body.removeEventListener('click', this.close)
       }
-    }
+    },
   },
   mounted() {
     this.searchPool = this.generateRoutes(this.routes)
@@ -97,13 +97,13 @@ export default {
         keys: [
           {
             name: 'title',
-            weight: 0.7
+            weight: 0.7,
           },
           {
             name: 'path',
-            weight: 0.3
-          }
-        ]
+            weight: 0.3,
+          },
+        ],
       })
     },
     // Filter out the routes that can be displayed in the sidebar
@@ -119,7 +119,7 @@ export default {
 
         const data = {
           path: path.resolve(basePath, router.path),
-          title: [...prefixTitle]
+          title: [...prefixTitle],
         }
 
         if (router.meta && router.meta.title) {
@@ -152,8 +152,8 @@ export default {
       } else {
         this.options = []
       }
-    }
-  }
+    },
+  },
 }
 </script>
 

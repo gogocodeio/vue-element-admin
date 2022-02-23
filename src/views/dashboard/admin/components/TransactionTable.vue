@@ -28,17 +28,17 @@ export default {
     statusFilter(status) {
       const statusMap = {
         success: 'success',
-        pending: 'danger'
+        pending: 'danger',
       }
       return statusMap[status]
     },
     orderNoFilter(str) {
       return str.substring(0, 30)
-    }
+    },
   },
   data() {
     return {
-      list: null
+      list: null,
     }
   },
   created() {
@@ -49,7 +49,7 @@ export default {
       transactionList().then((response) => {
         this.list = response.data.items.slice(0, 8)
       })
-    }
-  }
+    },
+  },
 }
 </script>

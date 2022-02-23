@@ -52,7 +52,7 @@ const content = `<p>Last week at<a href="https://vuejs.london/summary" rel="nofo
 
 const data = {
   title,
-  content
+  content,
 }
 
 export default data

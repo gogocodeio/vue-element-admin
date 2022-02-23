@@ -105,7 +105,7 @@ export default {
       setDecimals: 0,
       setSeparator: ',',
       setSuffix: ' rmb',
-      setPrefix: '¥ '
+      setPrefix: '¥ ',
     }
   },
   computed: {
@@ -149,7 +149,7 @@ export default {
     },
     _prefix() {
       return this.setPrefix
-    }
+    },
   },
   methods: {
     start() {
@@ -157,8 +157,8 @@ export default {
     },
     pauseResume() {
       this.$refs.example.pauseResume()
-    }
-  }
+    },
+  },
 }
 </script>
 

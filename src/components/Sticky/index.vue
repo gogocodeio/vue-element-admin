@@ -23,16 +23,16 @@ export default {
   props: {
     stickyTop: {
       type: Number,
-      default: 0
+      default: 0,
     },
     zIndex: {
       type: Number,
-      default: 1
+      default: 1,
     },
     className: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
   },
   data() {
     return {
@@ -40,7 +40,7 @@ export default {
       position: '',
       width: undefined,
       height: undefined,
-      isSticky: false
+      isSticky: false,
     }
   },
   mounted() {
@@ -91,7 +91,7 @@ export default {
       if (this.isSticky) {
         this.width = this.$el.getBoundingClientRect().width + 'px'
       }
-    }
-  }
+    },
+  },
 }
 </script>

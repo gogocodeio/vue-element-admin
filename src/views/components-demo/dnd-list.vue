@@ -28,7 +28,7 @@ export default {
   data() {
     return {
       list1: [],
-      list2: []
+      list2: [],
     }
   },
   created() {
@@ -41,7 +41,7 @@ export default {
         this.list1 = response.data.items.splice(0, 5)
         this.list2 = response.data.items
       })
-    }
-  }
+    },
+  },
 }
 </script>

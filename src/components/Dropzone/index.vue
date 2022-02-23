@@ -15,65 +15,65 @@ export default {
   props: {
     id: {
       type: String,
-      required: true
+      required: true,
     },
     url: {
       type: String,
-      required: true
+      required: true,
     },
     clickable: {
       type: Boolean,
-      default: true
+      default: true,
     },
     defaultMsg: {
       type: String,
-      default: '上传图片'
+      default: '上传图片',
     },
     acceptedFiles: {
       type: String,
-      default: ''
+      default: '',
     },
     thumbnailHeight: {
       type: Number,
-      default: 200
+      default: 200,
     },
     thumbnailWidth: {
       type: Number,
-      default: 200
+      default: 200,
     },
     showRemoveLink: {
       type: Boolean,
-      default: true
+      default: true,
     },
     maxFilesize: {
       type: Number,
-      default: 2
+      default: 2,
     },
     maxFiles: {
       type: Number,
-      default: 3
+      default: 3,
     },
     autoProcessQueue: {
       type: Boolean,
-      default: true
+      default: true,
     },
     useCustomDropzoneOptions: {
       type: Boolean,
-      default: false
+      default: false,
     },
     defaultImg: {
       default: '',
-      type: [String, Array]
+      type: [String, Array],
     },
     couldPaste: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   data() {
     return {
       dropzone: '',
-      initOnce: true
+      initOnce: true,
     }
   },
   watch: {
@@ -85,7 +85,7 @@ export default {
       if (!this.initOnce) return
       this.initImages(val)
       this.initOnce = false
-    }
+    },
   },
   mounted() {
     const element = document.getElementById(this.id)
@@ -153,7 +153,7 @@ export default {
         // formData.append('token', file.token);
         // formData.append('key', file.key);
         vm.initOnce = false
-      }
+      },
     })
 
     if (this.couldPaste) {
@@ -212,8 +212,8 @@ export default {
         mockFile.previewElement.classList.add('dz-success')
         mockFile.previewElement.classList.add('dz-complete')
       }
-    }
-  }
+    },
+  },
 }
 </script>
 

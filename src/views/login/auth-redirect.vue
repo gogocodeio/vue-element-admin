@@ -10,6 +10,6 @@ export default {
   },
   render: function(h) {
     return h() // avoid warning message
-  }
+  },
 }
 </script>

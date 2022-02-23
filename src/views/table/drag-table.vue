@@ -84,10 +84,10 @@ export default {
       const statusMap = {
         published: 'success',
         draft: 'info',
-        deleted: 'danger'
+        deleted: 'danger',
       }
       return statusMap[status]
-    }
+    },
   },
   data() {
     return {
@@ -96,11 +96,11 @@ export default {
       listLoading: true,
       listQuery: {
         page: 1,
-        limit: 10
+        limit: 10,
       },
       sortable: null,
       oldList: [],
-      newList: []
+      newList: [],
     }
   },
   created() {
@@ -137,10 +137,10 @@ export default {
           // for show the changes, you can delete in you code
           const tempIndex = this.newList.splice(evt.oldIndex, 1)[0]
           this.newList.splice(evt.newIndex, 0, tempIndex)
-        }
+        },
       })
-    }
-  }
+    },
+  },
 }
 </script>
 

@@ -81,14 +81,14 @@ import {
   getRoles,
   addRole,
   deleteRole,
-  updateRole
+  updateRole,
 } from '@/api/role'
 
 const defaultRole = {
   key: '',
   name: '',
   description: '',
-  routes: []
+  routes: [],
 }
 
 export default {
@@ -102,14 +102,14 @@ export default {
       checkStrictly: false,
       defaultProps: {
         children: 'children',
-        label: 'title'
-      }
+        label: 'title',
+      },
     }
   },
   computed: {
     routesData() {
       return this.routes
-    }
+    },
   },
   created() {
     // Mock: get all routes and roles list from server
@@ -148,7 +148,7 @@ export default {
 
         const data = {
           path: path.resolve(basePath, route.path),
-          title: route.meta && route.meta.title
+          title: route.meta && route.meta.title,
         }
 
         // recursive child routes
@@ -196,14 +196,14 @@ export default {
       this.$confirm('Confirm to remove the role?', 'Warning', {
         confirmButtonText: 'Confirm',
         cancelButtonText: 'Cancel',
-        type: 'warning'
+        type: 'warning',
       })
         .then(async() => {
           await deleteRole(row.key)
           this.rolesList.splice($index, 1)
           this.$message({
             type: 'success',
-            message: 'Delete succed!'
+            message: 'Delete succed!',
           })
         })
         .catch((err) => {
@@ -268,7 +268,7 @@ export default {
             <div>Role Name: ${name}</div>
             <div>Description: ${description}</div>
           `,
-        type: 'success'
+        type: 'success',
       })
     },
     // reference: src/view/layout/components/Sidebar/SidebarItem.vue
@@ -290,8 +290,8 @@ export default {
       }
 
       return false
-    }
-  }
+    },
+  },
 }
 </script>
 

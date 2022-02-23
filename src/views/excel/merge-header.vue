@@ -61,7 +61,7 @@ export default {
     return {
       list: null,
       listLoading: true,
-      downloadLoading: false
+      downloadLoading: false,
     }
   },
   created() {
@@ -88,7 +88,7 @@ export default {
           multiHeader,
           header,
           merges,
-          data
+          data,
         })
         this.downloadLoading = false
       })
@@ -103,7 +103,7 @@ export default {
           }
         })
       )
-    }
-  }
+    },
+  },
 }
 </script>

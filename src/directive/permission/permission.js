@@ -27,5 +27,5 @@ export default {
   },
   update(el, binding) {
     checkPermission(el, binding)
-  }
+  },
 }

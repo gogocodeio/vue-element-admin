@@ -34,12 +34,12 @@ export default {
   data() {
     return {
       emptyGif:
-        'https://wpimg.wallstcn.com/0e03b7da-db9e-4819-ba10-9016ddfdaed3'
+        'https://wpimg.wallstcn.com/0e03b7da-db9e-4819-ba10-9016ddfdaed3',
     }
   },
   computed: {
-    ...mapGetters(['name', 'avatar', 'roles'])
-  }
+    ...mapGetters(['name', 'avatar', 'roles']),
+  },
 }
 </script>
 

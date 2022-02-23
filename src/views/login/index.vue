@@ -121,22 +121,22 @@ export default {
     return {
       loginForm: {
         username: 'admin',
-        password: '111111'
+        password: '111111',
       },
       loginRules: {
         username: [
-          { required: true, trigger: 'blur', validator: validateUsername }
+          { required: true, trigger: 'blur', validator: validateUsername },
         ],
         password: [
-          { required: true, trigger: 'blur', validator: validatePassword }
-        ]
+          { required: true, trigger: 'blur', validator: validatePassword },
+        ],
       },
       passwordType: 'password',
       capsTooltip: false,
       loading: false,
       showDialog: false,
       redirect: undefined,
-      otherQuery: {}
+      otherQuery: {},
     }
   },
   watch: {
@@ -148,8 +148,8 @@ export default {
           this.otherQuery = this.getOtherQuery(query)
         }
       },
-      immediate: true
-    }
+      immediate: true,
+    },
   },
   created() {
     // window.addEventListener('storage', this.afterQRScan)
@@ -188,7 +188,7 @@ export default {
             .then(() => {
               this.$router.push({
                 path: this.redirect || '/',
-                query: this.otherQuery
+                query: this.otherQuery,
               })
               this.loading = false
             })
@@ -208,7 +208,7 @@ export default {
         }
         return acc
       }, {})
-    }
+    },
     // afterQRScan() {
     //   if (e.key === 'x-admin-oauth-code') {
     //     const code = getQueryObject(e.newValue)
@@ -227,7 +227,7 @@ export default {
     //     }
     //   }
     // }
-  }
+  },
 }
 </script>
 

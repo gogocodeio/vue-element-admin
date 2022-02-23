@@ -25,7 +25,7 @@ export default {
   data() {
     return {
       article: '',
-      fullscreenLoading: true
+      fullscreenLoading: true,
     }
   },
   mounted() {
@@ -44,8 +44,8 @@ export default {
           })
         }, 3000)
       })
-    }
-  }
+    },
+  },
 }
 </script>
 
