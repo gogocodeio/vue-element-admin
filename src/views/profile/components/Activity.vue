@@ -21,7 +21,7 @@
       <ul class="list-inline">
         <li>
           <span class="link-black text-sm">
-            <i class="el-icon-share" />
+            <el-icon><el-icon-share /></el-icon>
             Share
           </span>
         </li>
@@ -54,7 +54,7 @@
       <ul class="list-inline">
         <li>
           <span class="link-black text-sm">
-            <i class="el-icon-share" />
+            <el-icon><el-icon-share /></el-icon>
             Share
           </span>
         </li>
@@ -88,7 +88,7 @@
       <ul class="list-inline">
         <li>
           <span class="link-black text-sm"
-            ><i class="el-icon-share" /> Share</span
+            ><el-icon><el-icon-share /></el-icon> Share</span
           >
         </li>
         <li>
@@ -102,11 +102,15 @@
 </template>
 
 <script>
+import { Share as ElIconShare } from '@element-plus/icons'
 import * as Vue from 'vue'
 const avatarPrefix = '?imageView2/1/w/80/h/80'
 const carouselPrefix = '?imageView2/2/h/440'
 
 export default {
+  components: {
+    ElIconShare,
+  },
   data() {
     return {
       carouselImages: [

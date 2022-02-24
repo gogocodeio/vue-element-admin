@@ -31,16 +31,16 @@
     </el-table>
 
     <el-dialog
-      v-model:visible="dialogVisible"
+      v-model="dialogVisible"
       :title="dialogType === 'edit' ? 'Edit Role' : 'New Role'"
     >
       <el-form :model="role" label-width="80px" label-position="left">
         <el-form-item label="Name">
-          <el-input v-model:value="role.name" placeholder="Role Name" />
+          <el-input v-model="role.name" placeholder="Role Name" />
         </el-form-item>
         <el-form-item label="Desc">
           <el-input
-            v-model:value="role.description"
+            v-model="role.description"
             :autosize="{ minRows: 2, maxRows: 4 }"
             type="textarea"
             placeholder="Role Description"

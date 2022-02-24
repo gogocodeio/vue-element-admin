@@ -39,8 +39,9 @@ export default {
       }, 100)
       window.addEventListener('resize', this.$_resizeHandler)
 
-      this.$_sidebarElm =
-        document.getElementsByClassName('sidebar-container')[0]
+      this.$_sidebarElm = document.getElementsByClassName(
+        'sidebar-container'
+      )[0]
       this.$_sidebarElm &&
         this.$_sidebarElm.addEventListener(
           'transitionend',

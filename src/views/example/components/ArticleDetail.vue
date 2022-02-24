@@ -48,7 +48,7 @@
                     class="postInfo-container-item"
                   >
                     <el-select
-                      v-model:value="postForm.author"
+                      v-model="postForm.author"
                       :remote-method="getRemoteUserList"
                       filterable
                       default-first-option
@@ -72,7 +72,7 @@
                     class="postInfo-container-item"
                   >
                     <el-date-picker
-                      v-model:value="displayTime"
+                      v-model="displayTime"
                       type="datetime"
                       format="yyyy-MM-dd HH:mm:ss"
                       placeholder="Select date and time"
@@ -87,7 +87,7 @@
                     class="postInfo-container-item"
                   >
                     <el-rate
-                      v-model:value="postForm.importance"
+                      v-model="postForm.importance"
                       :max="3"
                       :colors="['#99A9BF', '#F7BA2A', '#FF9900']"
                       :low-threshold="1"
@@ -107,7 +107,7 @@
           label="Summary:"
         >
           <el-input
-            v-model:value="postForm.content_short"
+            v-model="postForm.content_short"
             :rows="1"
             type="textarea"
             class="article-textarea"

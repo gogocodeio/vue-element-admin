@@ -9,14 +9,14 @@
       drag
       action="https://httpbin.org/post"
     >
-      <i class="el-icon-upload" />
+      <el-icon><el-icon-upload /></el-icon>
       <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
     </el-upload>
     <div class="image-preview image-app-preview">
       <div v-show="imageUrl.length > 1" class="image-preview-wrapper">
         <img :src="imageUrl" />
         <div class="image-preview-action">
-          <i class="el-icon-delete" @click="rmImage" />
+          <el-icon><el-icon-delete /></el-icon>
         </div>
       </div>
     </div>
@@ -24,7 +24,7 @@
       <div v-show="imageUrl.length > 1" class="image-preview-wrapper">
         <img :src="imageUrl" />
         <div class="image-preview-action">
-          <i class="el-icon-delete" @click="rmImage" />
+          <el-icon><el-icon-delete /></el-icon>
         </div>
       </div>
     </div>
@@ -32,11 +32,19 @@
 </template>
 
 <script>
+import {
+  Upload as ElIconUpload,
+  Delete as ElIconDelete,
+} from '@element-plus/icons'
 import { $on, $off, $once, $emit } from '../../utils/gogocodeTransfer'
 import * as Vue from 'vue'
 import { getToken } from '@/api/qiniu'
 
 export default {
+  components: {
+    ElIconUpload,
+    ElIconDelete,
+  },
   name: 'SingleImageUpload3',
   props: {
     value: {

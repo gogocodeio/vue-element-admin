@@ -18,7 +18,7 @@
         </span>
         <el-input
           ref="username"
-          v-model:value="loginForm.username"
+          v-model="loginForm.username"
           placeholder="Username"
           name="username"
           type="text"
@@ -28,7 +28,7 @@
       </el-form-item>
 
       <el-tooltip
-        v-model:value="capsTooltip"
+        v-model="capsTooltip"
         content="Caps lock is On"
         placement="right"
         manual
@@ -40,7 +40,7 @@
           <el-input
             :key="passwordType"
             ref="password"
-            v-model:value="loginForm.password"
+            v-model="loginForm.password"
             :type="passwordType"
             placeholder="Password"
             name="password"
@@ -86,7 +86,7 @@
       </div>
     </el-form>
 
-    <el-dialog title="Or connect with" v-model:visible="showDialog">
+    <el-dialog title="Or connect with" v-model="showDialog">
       Can not be simulated on local, so please combine you own business
       simulation! ! !
       <br />

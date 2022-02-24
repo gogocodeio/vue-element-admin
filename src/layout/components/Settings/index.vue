@@ -13,17 +13,17 @@
 
       <div class="drawer-item">
         <span>Open Tags-View</span>
-        <el-switch v-model:value="tagsView" class="drawer-switch" />
+        <el-switch v-model="tagsView" class="drawer-switch" />
       </div>
 
       <div class="drawer-item">
         <span>Fixed Header</span>
-        <el-switch v-model:value="fixedHeader" class="drawer-switch" />
+        <el-switch v-model="fixedHeader" class="drawer-switch" />
       </div>
 
       <div class="drawer-item">
         <span>Sidebar Logo</span>
-        <el-switch v-model:value="sidebarLogo" class="drawer-switch" />
+        <el-switch v-model="sidebarLogo" class="drawer-switch" />
       </div>
     </div>
   </div>

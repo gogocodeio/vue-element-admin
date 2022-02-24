@@ -1,6 +1,6 @@
 <template>
   <div class="errPage-container">
-    <el-button icon="el-icon-arrow-left" class="pan-back-btn" @click="back">
+    <el-button :icon="ElIconArrowLeft" class="pan-back-btn" @click="back">
       返回
     </el-button>
     <el-row>
@@ -31,26 +31,28 @@
         />
       </el-col>
     </el-row>
-    <el-dialog v-model:visible="dialogVisible" title="随便看">
+    <el-dialog v-model="dialogVisible" title="随便看">
       <img :src="ewizardClap" class="pan-img" />
     </el-dialog>
   </div>
 </template>
 
 <script>
+import { ArrowLeft as ElIconArrowLeft } from '@element-plus/icons'
 import * as Vue from 'vue'
 import errGif from '@/assets/401_images/401.gif'
 
 export default {
-  name: 'Page401',
   data() {
     return {
       errGif: errGif + '?' + +new Date(),
       ewizardClap:
         'https://wpimg.wallstcn.com/007ef517-bafd-4066-aae4-6883632d9646',
       dialogVisible: false,
+      ElIconArrowLeft,
     }
   },
+  name: 'Page401',
   methods: {
     back() {
       if (this.$route.query.noGoBack) {

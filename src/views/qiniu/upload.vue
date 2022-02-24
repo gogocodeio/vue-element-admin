@@ -6,18 +6,19 @@
     action="https://upload.qbox.me"
     drag
   >
-    <i class="el-icon-upload" />
+    <el-icon><el-icon-upload /></el-icon>
     <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
   </el-upload>
 </template>
 
 <script>
+import { Upload as ElIconUpload } from '@element-plus/icons'
 import * as Vue from 'vue'
 import { getToken } from '@/api/qiniu'
-// 获取七牛token 后端通过Access Key,Secret Key,bucket等生成token
-// 七牛官方sdk https://developer.qiniu.com/sdk#official-sdk
-
 export default {
+  components: {
+    ElIconUpload,
+  },
   data() {
     return {
       dataObj: { token: '', key: '' },

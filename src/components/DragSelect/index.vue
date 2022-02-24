@@ -2,7 +2,7 @@
   <el-select
     v-bind="$attrs"
     ref="dragSelect"
-    v-model:value="selectVal"
+    v-model="selectVal"
     class="drag-select"
     multiple
   >

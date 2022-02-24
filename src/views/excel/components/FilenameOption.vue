@@ -2,18 +2,24 @@
   <div style="display: inline-block">
     <label class="radio-label" style="padding-left: 0">Filename: </label>
     <el-input
-      v-model:value="filename"
+      v-model="filename"
       placeholder="Please enter the file name (default excel-list)"
       style="width: 345px"
-      prefix-icon="el-icon-document"
+      :prefix-icon="ElIconDocument"
     />
   </div>
 </template>
 
 <script>
+import { Document as ElIconDocument } from '@element-plus/icons'
 import { $on, $off, $once, $emit } from '../../../utils/gogocodeTransfer'
 import * as Vue from 'vue'
 export default {
+  data() {
+    return {
+      ElIconDocument,
+    }
+  },
   props: {
     value: {
       type: String,

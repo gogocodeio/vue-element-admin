@@ -1,6 +1,6 @@
 <template>
   <el-color-picker
-    v-model:value="theme"
+    v-model="theme"
     :predefine="[
       '#409EFF',
       '#1890ff',

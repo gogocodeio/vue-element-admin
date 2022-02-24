@@ -3,14 +3,13 @@
     <sticky :z-index="10" class-name="sub-navbar">
       <el-dropdown trigger="click">
         <el-button plain>
-          Platform<i class="el-icon-caret-bottom el-icon--right" />
+          Platform<el-icon class="el-icon--right"
+            ><el-icon-caret-bottom
+          /></el-icon>
         </el-button>
         <template v-slot:dropdown>
           <el-dropdown-menu class="no-border">
-            <el-checkbox-group
-              v-model:value="platforms"
-              style="padding: 5px 15px"
-            >
+            <el-checkbox-group v-model="platforms" style="padding: 5px 15px">
               <el-checkbox
                 v-for="item in platformsOptions"
                 :key="item.key"
@@ -25,14 +24,11 @@
 
       <el-dropdown trigger="click">
         <el-button plain>
-          Link<i class="el-icon-caret-bottom el-icon--right" />
+          Link<el-icon class="el-icon--right"><el-icon-caret-bottom /></el-icon>
         </el-button>
         <template v-slot:dropdown>
           <el-dropdown-menu class="no-padding no-border" style="width: 300px">
-            <el-input
-              v-model:value="url"
-              placeholder="Please enter the content"
-            >
+            <el-input v-model="url" placeholder="Please enter the content">
               <template v-slot:prepend> Url </template>
             </el-input>
           </el-dropdown-menu>
@@ -41,7 +37,7 @@
 
       <div class="time-container">
         <el-date-picker
-          v-model:value="time"
+          v-model="time"
           type="datetime"
           format="yyyy-MM-dd HH:mm:ss"
           placeholder="Release time"
@@ -115,12 +111,16 @@
 </template>
 
 <script>
+import { CaretBottom as ElIconCaretBottom } from '@element-plus/icons'
 import * as Vue from 'vue'
 import Sticky from '@/components/Sticky'
 
 export default {
+  components: {
+    Sticky,
+    ElIconCaretBottom,
+  },
   name: 'StickyDemo',
-  components: { Sticky },
   data() {
     return {
       time: '',

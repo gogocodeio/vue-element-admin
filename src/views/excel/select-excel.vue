@@ -1,16 +1,16 @@
 <template>
   <div class="app-container">
     <el-input
-      v-model:value="filename"
+      v-model="filename"
       placeholder="Please enter the file name (default excel-list)"
       style="width: 350px"
-      prefix-icon="el-icon-document"
+      :prefix-icon="ElIconDocument"
     />
     <el-button
       :loading="downloadLoading"
       style="margin-bottom: 20px"
       type="primary"
-      icon="el-icon-document"
+      :icon="ElIconDocument"
       @click="handleDownload"
     >
       Export Selected Items
@@ -55,7 +55,7 @@
       </el-table-column>
       <el-table-column align="center" label="PDate" width="220">
         <template v-slot="scope">
-          <i class="el-icon-time" />
+          <el-icon><el-icon-time /></el-icon>
           <span>{{ scope.row.display_time }}</span>
         </template>
       </el-table-column>
@@ -64,11 +64,14 @@
 </template>
 
 <script>
+import {
+  Time as ElIconTime,
+  Document as ElIconDocument,
+} from '@element-plus/icons'
 import * as Vue from 'vue'
 import { fetchList } from '@/api/article'
 
 export default {
-  name: 'SelectExcel',
   data() {
     return {
       list: null,
@@ -76,8 +79,13 @@ export default {
       multipleSelection: [],
       downloadLoading: false,
       filename: '',
+      ElIconDocument,
     }
   },
+  components: {
+    ElIconTime,
+  },
+  name: 'SelectExcel',
   created() {
     this.fetchData()
   },

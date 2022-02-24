@@ -14,7 +14,7 @@
       </template>
       <div class="box-item">
         <span class="field-label">Change Theme : </span>
-        <el-switch v-model:value="theme" />
+        <el-switch v-model="theme" />
         <aside style="margin-top: 15px">
           Tips: It is different from the theme-pick on the navbar is two
           different skinning methods, each with different application scenarios.
@@ -32,13 +32,13 @@
     </div>
 
     <div class="block">
-      <el-button type="primary" icon="el-icon-edit" />
-      <el-button type="primary" icon="el-icon-share" />
-      <el-button type="primary" icon="el-icon-delete" />
-      <el-button type="primary" icon="el-icon-search"> Search </el-button>
+      <el-button type="primary" :icon="ElIconEdit" />
+      <el-button type="primary" :icon="ElIconShare" />
+      <el-button type="primary" :icon="ElIconDelete" />
+      <el-button type="primary" :icon="ElIconSearch"> Search </el-button>
       <el-button type="primary">
         Upload
-        <i class="el-icon-upload el-icon-right" />
+        <el-icon class="el-icon-right"><el-icon-upload /></el-icon>
       </el-button>
     </div>
 
@@ -54,7 +54,7 @@
     </div>
 
     <div class="block">
-      <el-radio-group v-model:value="radio">
+      <el-radio-group v-model="radio">
         <el-radio :label="3"> Option A </el-radio>
         <el-radio :label="6"> Option B </el-radio>
         <el-radio :label="9"> Option C </el-radio>
@@ -62,18 +62,24 @@
     </div>
 
     <div class="block">
-      <el-slider v-model:value="slideValue" />
+      <el-slider v-model="slideValue" />
     </div>
   </div>
 </template>
 
 <script>
+import {
+  Upload as ElIconUpload,
+  Edit as ElIconEdit,
+  Share as ElIconShare,
+  Delete as ElIconDelete,
+  Search as ElIconSearch,
+} from '@element-plus/icons'
 import * as Vue from 'vue'
 import { toggleClass } from '@/utils'
 import '@/assets/custom-theme/index.css' // the theme changed version element-ui css
 
 export default {
-  name: 'Theme',
   data() {
     return {
       theme: false,
@@ -86,8 +92,16 @@ export default {
       ],
       slideValue: 50,
       radio: 3,
+      ElIconEdit,
+      ElIconShare,
+      ElIconDelete,
+      ElIconSearch,
     }
   },
+  components: {
+    ElIconUpload,
+  },
+  name: 'Theme',
   watch: {
     theme() {
       toggleClass(document.body, 'custom-theme')

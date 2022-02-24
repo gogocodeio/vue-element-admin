@@ -45,8 +45,9 @@ export default {
       }
     },
     $_initSidebarResizeEvent() {
-      this.$_sidebarElm =
-        document.getElementsByClassName('sidebar-container')[0]
+      this.$_sidebarElm = document.getElementsByClassName(
+        'sidebar-container'
+      )[0]
       this.$_sidebarElm &&
         this.$_sidebarElm.addEventListener(
           'transitionend',

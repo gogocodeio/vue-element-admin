@@ -2,11 +2,11 @@
   <el-dropdown :hide-on-click="false" :show-timeout="100" trigger="click">
     <el-button plain>
       Platfroms({{ platforms.length }})
-      <i class="el-icon-caret-bottom el-icon--right" />
+      <el-icon class="el-icon--right"><el-icon-caret-bottom /></el-icon>
     </el-button>
     <template v-slot:dropdown>
       <el-dropdown-menu class="no-border">
-        <el-checkbox-group v-model:value="platforms" style="padding: 5px 15px">
+        <el-checkbox-group v-model="platforms" style="padding: 5px 15px">
           <el-checkbox
             v-for="item in platformsOptions"
             :key="item.key"
@@ -21,9 +21,13 @@
 </template>
 
 <script>
+import { CaretBottom as ElIconCaretBottom } from '@element-plus/icons'
 import { $on, $off, $once, $emit } from '../../../../utils/gogocodeTransfer'
 import * as Vue from 'vue'
 export default {
+  components: {
+    ElIconCaretBottom,
+  },
   props: {
     value: {
       required: true,

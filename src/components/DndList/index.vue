@@ -21,7 +21,7 @@
               style="float: right; margin-top: -20px; margin-right: 5px"
               @click="deleteEle(element)"
             >
-              <i style="color: #ff4949" class="el-icon-delete" />
+              <el-icon style="color: #ff4949"><el-icon-delete /></el-icon>
             </span>
           </div>
         </div>
@@ -45,12 +45,16 @@
 </template>
 
 <script>
+import { Delete as ElIconDelete } from '@element-plus/icons'
 import * as Vue from 'vue'
 import draggable from 'vuedraggable'
 
 export default {
+  components: {
+    draggable,
+    ElIconDelete,
+  },
   name: 'DndList',
-  components: { draggable },
   props: {
     list1: {
       type: Array,

@@ -7,7 +7,7 @@
     />
     <el-select
       ref="headerSearchSelect"
-      v-model:value="search"
+      v-model="search"
       :remote-method="querySearch"
       filterable
       default-first-option

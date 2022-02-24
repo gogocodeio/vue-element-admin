@@ -4,7 +4,7 @@
       :loading="downloadLoading"
       style="margin-bottom: 20px"
       type="primary"
-      icon="el-icon-document"
+      :icon="ElIconDocument"
       @click="handleDownload"
       >Export</el-button
     >
@@ -42,7 +42,7 @@
       </el-table-column>
       <el-table-column align="center" label="Date" width="220">
         <template v-slot="scope">
-          <i class="el-icon-time" />
+          <el-icon><el-icon-time /></el-icon>
           <span>{{
             $filters.parseTime(scope.row.timestamp, '{y}-{m}-{d} {h}:{i}')
           }}</span>
@@ -53,19 +53,27 @@
 </template>
 
 <script>
+import {
+  Time as ElIconTime,
+  Document as ElIconDocument,
+} from '@element-plus/icons'
 import * as Vue from 'vue'
 import { fetchList } from '@/api/article'
 import { parseTime } from '@/utils'
 
 export default {
-  name: 'MergeHeader',
   data() {
     return {
       list: null,
       listLoading: true,
       downloadLoading: false,
+      ElIconDocument,
     }
   },
+  components: {
+    ElIconTime,
+  },
+  name: 'MergeHeader',
   created() {
     this.fetchData()
   },

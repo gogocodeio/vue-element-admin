@@ -10,14 +10,14 @@
       </el-button>
     </el-badge>
 
-    <el-dialog v-model:visible="dialogTableVisible" width="80%" append-to-body>
+    <el-dialog v-model="dialogTableVisible" width="80%" append-to-body>
       <template v-slot:title>
         <div>
           <span style="padding-right: 10px">Error Log</span>
           <el-button
             size="mini"
             type="primary"
-            icon="el-icon-delete"
+            :icon="ElIconDelete"
             @click="clearAll"
             >Clear All</el-button
           >
@@ -63,14 +63,16 @@
 </template>
 
 <script>
+import { Delete as ElIconDelete } from '@element-plus/icons'
 import * as Vue from 'vue'
 export default {
-  name: 'ErrorLog',
   data() {
     return {
       dialogTableVisible: false,
+      ElIconDelete,
     }
   },
+  name: 'ErrorLog',
   computed: {
     errorLogs() {
       return this.$store.getters.errorLogs

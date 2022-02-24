@@ -50,15 +50,11 @@
       <el-table-column min-width="300px" label="Title">
         <template v-slot="{ row }">
           <template v-if="row.edit">
-            <el-input
-              v-model:value="row.title"
-              class="edit-input"
-              size="small"
-            />
+            <el-input v-model="row.title" class="edit-input" size="small" />
             <el-button
               class="cancel-btn"
               size="small"
-              icon="el-icon-refresh"
+              :icon="ElIconRefresh"
               type="warning"
               @click="cancelEdit(row)"
             >
@@ -75,7 +71,7 @@
             v-if="row.edit"
             type="success"
             size="small"
-            icon="el-icon-circle-check-outline"
+            :icon="ElIconCircleCheckOutline"
             @click="confirmEdit(row)"
           >
             Ok
@@ -84,7 +80,7 @@
             v-else
             type="primary"
             size="small"
-            icon="el-icon-edit"
+            :icon="ElIconEdit"
             @click="row.edit = !row.edit"
           >
             Edit
@@ -96,11 +92,15 @@
 </template>
 
 <script>
+import {
+  Refresh as ElIconRefresh,
+  CircleCheckOutline as ElIconCircleCheckOutline,
+  Edit as ElIconEdit,
+} from '@element-plus/icons'
 import * as Vue from 'vue'
 import { fetchList } from '@/api/article'
 
 export default {
-  name: 'InlineEditTable',
   data() {
     return {
       list: null,
@@ -109,8 +109,12 @@ export default {
         page: 1,
         limit: 10,
       },
+      ElIconRefresh,
+      ElIconCircleCheckOutline,
+      ElIconEdit,
     }
   },
+  name: 'InlineEditTable',
   created() {
     this.getList()
   },

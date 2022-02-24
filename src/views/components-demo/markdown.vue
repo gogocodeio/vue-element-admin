@@ -55,7 +55,7 @@
     <el-button
       style="margin-top: 80px"
       type="primary"
-      icon="el-icon-document"
+      :icon="ElIconDocument"
       @click="getHtml"
     >
       Get HTML
@@ -65,6 +65,7 @@
 </template>
 
 <script>
+import { Document as ElIconDocument } from '@element-plus/icons'
 import * as Vue from 'vue'
 import MarkdownEditor from '@/components/MarkdownEditor'
 
@@ -77,8 +78,6 @@ const content = `
 
 `
 export default {
-  name: 'MarkdownDemo',
-  components: { MarkdownEditor },
   data() {
     return {
       content1: content,
@@ -91,8 +90,11 @@ export default {
         zh: 'zh_CN',
         es: 'es_ES',
       },
+      ElIconDocument,
     }
   },
+  name: 'MarkdownDemo',
+  components: { MarkdownEditor },
   computed: {
     language() {
       return this.languageTypeList['en']

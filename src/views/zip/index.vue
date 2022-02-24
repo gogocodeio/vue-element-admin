@@ -1,16 +1,16 @@
 <template>
   <div class="app-container">
     <el-input
-      v-model:value="filename"
+      v-model="filename"
       placeholder="Please enter the file name (default file)"
       style="width: 300px"
-      prefix-icon="el-icon-document"
+      :prefix-icon="ElIconDocument"
     />
     <el-button
       :loading="downloadLoading"
       style="margin-bottom: 20px"
       type="primary"
-      icon="el-icon-document"
+      :icon="ElIconDocument"
       @click="handleDownload"
     >
       Export Zip
@@ -45,7 +45,7 @@
       </el-table-column>
       <el-table-column align="center" label="Date" width="220">
         <template v-slot="scope">
-          <i class="el-icon-time" />
+          <el-icon><el-icon-time /></el-icon>
           <span>{{ scope.row.display_time }}</span>
         </template>
       </el-table-column>
@@ -54,19 +54,27 @@
 </template>
 
 <script>
+import {
+  Time as ElIconTime,
+  Document as ElIconDocument,
+} from '@element-plus/icons'
 import * as Vue from 'vue'
 import { fetchList } from '@/api/article'
 
 export default {
-  name: 'ExportZip',
   data() {
     return {
       list: null,
       listLoading: true,
       downloadLoading: false,
       filename: '',
+      ElIconDocument,
     }
   },
+  components: {
+    ElIconTime,
+  },
+  name: 'ExportZip',
   created() {
     this.fetchData()
   },

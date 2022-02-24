@@ -711,8 +711,16 @@ export default {
     // 缩放原图
     zoomImg(newRange) {
       const { sourceImgMasking, scale } = this
-      const { maxWidth, maxHeight, minWidth, minHeight, width, height, x, y } =
-        scale
+      const {
+        maxWidth,
+        maxHeight,
+        minWidth,
+        minHeight,
+        width,
+        height,
+        x,
+        y,
+      } = scale
       const sim = sourceImgMasking
       // 蒙版宽高
       const sWidth = sim.width
@@ -791,8 +799,16 @@ export default {
     },
     // 上传图片
     upload() {
-      const { lang, imgFormat, mime, url, params, field, ki, createImgUrl } =
-        this
+      const {
+        lang,
+        imgFormat,
+        mime,
+        url,
+        params,
+        field,
+        ki,
+        createImgUrl,
+      } = this
       const fmData = new FormData()
       fmData.append(
         field,

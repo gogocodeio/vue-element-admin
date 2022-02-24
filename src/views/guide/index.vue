@@ -9,7 +9,7 @@
       >
     </aside>
     <el-button
-      icon="el-icon-question"
+      :icon="ElIconQuestion"
       type="primary"
       @click.prevent.stop="guide"
     >
@@ -19,18 +19,20 @@
 </template>
 
 <script>
+import { Question as ElIconQuestion } from '@element-plus/icons'
 import * as Vue from 'vue'
 import Driver from 'driver.js' // import driver.js
 import 'driver.js/dist/driver.min.css' // import driver.js css
 import steps from './steps'
 
 export default {
-  name: 'Guide',
   data() {
     return {
       driver: null,
+      ElIconQuestion,
     }
   },
+  name: 'Guide',
   mounted() {
     this.driver = new Driver()
   },

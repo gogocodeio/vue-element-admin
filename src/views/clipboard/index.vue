@@ -1,15 +1,15 @@
 <template>
   <div class="app-container">
-    <el-tabs v-model:value="activeName">
+    <el-tabs v-model="activeName">
       <el-tab-pane label="use clipboard  directly" name="directly">
         <el-input
-          v-model:value="inputData"
+          v-model="inputData"
           placeholder="Please input"
           style="width: 400px; max-width: 100%"
         />
         <el-button
           type="primary"
-          icon="el-icon-document"
+          :icon="ElIconDocument"
           @click="handleCopy(inputData, $event)"
         >
           copy
@@ -17,7 +17,7 @@
       </el-tab-pane>
       <el-tab-pane label="use clipboard by v-directive" name="v-directive">
         <el-input
-          v-model:value="inputData"
+          v-model="inputData"
           placeholder="Please input"
           style="width: 400px; max-width: 100%"
         />
@@ -25,7 +25,7 @@
           v-clipboard:copy="inputData"
           v-clipboard:success="clipboardSuccess"
           type="primary"
-          icon="el-icon-document"
+          :icon="ElIconDocument"
         >
           copy
         </el-button>
@@ -35,20 +35,22 @@
 </template>
 
 <script>
+import { Document as ElIconDocument } from '@element-plus/icons'
 import * as Vue from 'vue'
 import clip from '@/utils/clipboard' // use clipboard directly
 import clipboard from '@/directive/clipboard/index.js' // use clipboard by v-directive
 
 export default {
-  name: 'ClipboardDemo',
-  directives: {
-    clipboard,
-  },
   data() {
     return {
       activeName: 'directly',
       inputData: 'https://github.com/PanJiaChen/vue-element-admin',
+      ElIconDocument,
     }
+  },
+  name: 'ClipboardDemo',
+  directives: {
+    clipboard,
   },
   methods: {
     handleCopy(text, event) {
