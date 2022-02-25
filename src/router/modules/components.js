@@ -36,14 +36,14 @@ const componentsRouter = {
       name: 'JsonEditorDemo',
       meta: { title: 'JSON Editor' },
     },
-    {
-      path: 'split-pane',
-      component: Vue.defineAsyncComponent(
-        () => import('@/views/components-demo/split-pane')
-      ),
-      name: 'SplitpaneDemo',
-      meta: { title: 'SplitPane' },
-    },
+    // {
+    //   path: 'split-pane',
+    //   component: Vue.defineAsyncComponent(
+    //     () => import('@/views/components-demo/split-pane')
+    //   ),
+    //   name: 'SplitpaneDemo',
+    //   meta: { title: 'SplitPane' },
+    // },
     {
       path: 'avatar-upload',
       component: Vue.defineAsyncComponent(

@@ -23,7 +23,7 @@ export default {
   },
   computed: {
     scrollWrapper() {
-      return this.$refs.scrollContainer.$refs.wrap
+      return this.$refs.scrollContainer.$refs.wrap$
     },
   },
   mounted() {
@@ -45,7 +45,7 @@ export default {
       const $container = this.$refs.scrollContainer.$el
       const $containerWidth = $container.offsetWidth
       const $scrollWrapper = this.scrollWrapper
-      const tagList = this.$parent.$refs.tag
+      const tagList = this.$parent.$arrRefs.tag
 
       let firstTag = null
       let lastTag = null

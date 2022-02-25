@@ -78,7 +78,7 @@
 
 <script>
 import * as Vue from 'vue'
-import countTo from 'vue-count-to'
+import countTo from 'vue3-count-to'
 
 export default {
   name: 'CountToDemo',

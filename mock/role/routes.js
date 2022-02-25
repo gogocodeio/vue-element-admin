@@ -154,12 +154,12 @@ const asyncRoutes = [
         name: 'JsonEditorDemo',
         meta: { title: 'Json Editor' }
       },
-      {
-        path: 'split-pane',
-        component: 'views/components-demo/split-pane',
-        name: 'SplitpaneDemo',
-        meta: { title: 'SplitPane' }
-      },
+      // {
+      //   path: 'split-pane',
+      //   component: 'views/components-demo/split-pane',
+      //   name: 'SplitpaneDemo',
+      //   meta: { title: 'SplitPane' }
+      // },
       {
         path: 'avatar-upload',
         component: 'views/components-demo/avatar-upload',
@@ -511,7 +511,7 @@ const asyncRoutes = [
   },
 
   {
-    path: 'external-link',
+    path: '/external-link',
     component: 'layout/Layout',
     children: [
       {
@@ -521,7 +521,7 @@ const asyncRoutes = [
     ]
   },
 
-  { path: '*', redirect: '/404', hidden: true }
+  { path: '/:pathMatch(.*)*', redirect: '/404', hidden: true }
 ]
 
 module.exports = {

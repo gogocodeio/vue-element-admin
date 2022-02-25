@@ -1,24 +1,28 @@
 import * as Vue from 'vue'
 
-import Cookies from 'js-cookie'
 
 import 'normalize.css/normalize.css' // a modern alternative to CSS resets
 
 import Element from 'element-plus'
 import './styles/element-variables.scss'
-import enLang from 'element-ui/lib/locale/lang/en' // 如果使用中文语言包请默认支持，无需额外引入，请删除该依赖
+import zhCn from 'element-plus/es/locale/lang/zh-cn'
 
 import '@/styles/index.scss' // global css
 
+import SvgIcon from '@/components/SvgIcon' // svg component
 import App from './App'
 import store from './store'
 import router from './router'
 
-import './icons' // icon
+import installIcon from './icons' // icon
 import './permission' // permission control
-import './utils/error-log' // error log
+import installErrorLog from'./utils/error-log' // error log
 
 import * as filters from './filters' // global filters
+
+window.$vueApp = Vue.createApp(App)
+installIcon(window.$vueApp)
+installErrorLog(window.$vueApp)
 
 /**
  * If you don't want to use mock-server
@@ -34,19 +38,17 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 window.$vueApp.use(Element, {
-  size: Cookies.get('size') || 'medium', // set element-ui default size
-  locale: enLang, // 如果使用中文，无需设置，请删除
+  locale: zhCn, // 如果使用中文，无需设置，请删除
 })
 
 // register global utility filters
 Object.keys(filters).forEach((key) => {
-  ;(
+  (
     window.$vueApp.config.globalProperties.$filters ||
     (window.$vueApp.config.globalProperties.$filters = {})
-  ).key = filters[key]
+  )[key] = filters[key]
 })
 
-window.$vueApp = Vue.createApp(App)
 window.$vueApp.config.globalProperties.routerAppend = (path, pathToAppend) => {
   return path + (path.endsWith('/') ? '' : '/') + pathToAppend
 }

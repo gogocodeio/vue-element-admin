@@ -419,7 +419,7 @@ export const asyncRoutes = [
   },
 
   {
-    path: 'external-link',
+    path: '/external-link',
     component: Layout,
     children: [
       {
@@ -430,7 +430,7 @@ export const asyncRoutes = [
   },
 
   // 404 page must be placed at the end !!!
-  { path: '*', redirect: '/404', hidden: true },
+  { path: '/:pathMatch(.*)*', redirect: '/404', hidden: true },
 ]
 
 const createRouter = () =>

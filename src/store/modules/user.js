@@ -124,7 +124,7 @@ const actions = {
       root: true,
     })
     // dynamically add accessible routes
-    router.addRoutes(accessRoutes)
+    accessRoutes.forEach((route) => router.addRoute(route))
 
     // reset visited views and cached views
     dispatch('tagsView/delAllViews', null, { root: true })

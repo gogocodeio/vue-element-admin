@@ -70,7 +70,7 @@
 <script>
 import { $on, $off, $once, $emit } from '../../../../utils/gogocodeTransfer'
 import * as Vue from 'vue'
-import CountTo from 'vue-count-to'
+import CountTo from 'vue3-count-to'
 
 export default {
   components: {

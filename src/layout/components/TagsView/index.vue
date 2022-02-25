@@ -130,7 +130,7 @@ export default {
       return false
     },
     moveToCurrentTag() {
-      const tags = this.$refs.tag
+      const tags = this.$arrRefs.tag
       this.$nextTick(() => {
         for (const tag of tags) {
           if (tag.to.path === this.$route.path) {
@@ -220,14 +220,14 @@ export default {
     getRefSetter(refKey) {
       return (ref) => {
         !this.$arrRefs && (this.$arrRefs = {})
-        !this.$arrRefs[refKey] && (this.$arrRefs.arr = [])
+        !this.$arrRefs[refKey] && (this.$arrRefs[refKey] = [])
         ref && this.$arrRefs[refKey].push(ref)
       }
     },
   },
 
   beforeUpdate() {
-    this.$arrRefs && (this.$arrRefs.arr = [])
+    this.$arrRefs && (this.$arrRefs = {})
   },
 }
 </script>

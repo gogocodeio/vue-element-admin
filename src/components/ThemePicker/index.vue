@@ -19,7 +19,7 @@
 <script>
 import { $on, $off, $once, $emit } from '../../utils/gogocodeTransfer'
 import * as Vue from 'vue'
-const version = require('element-ui/package.json').version // element-ui version from node_modules
+// const version = require('element-plus/package.json').version // element-ui version from node_modules
 const ORIGINAL_THEME = '#409EFF' // default color
 
 export default {
@@ -81,7 +81,7 @@ export default {
       }
 
       if (!this.chalk) {
-        const url = `https://unpkg.com/element-ui@${version}/lib/theme-chalk/index.css`
+        const url = `https://unpkg.com/browse/element-plus@${process.env.ELEMENT_VERSION}/theme-chalk/index.css`
         await this.getCSSString(url, 'chalk')
       }
 

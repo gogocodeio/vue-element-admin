@@ -59,6 +59,7 @@ import * as Vue from 'vue'
 import clipboard from '@/utils/clipboard'
 import svgIcons from './svg-icons'
 import elementIcons from './element-icons'
+import * as elementIconComps from '@element-plus/icons'
 
 export default {
   name: 'Icons',
