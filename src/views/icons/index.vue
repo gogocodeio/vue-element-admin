@@ -43,7 +43,7 @@
                 </div>
               </template>
               <div class="icon-item">
-                <i :class="'el-icon-' + item" />
+                <el-icon><component :is="elementIconsMap[item]"></component></el-icon>
                 <span>{{ item }}</span>
               </div>
             </el-tooltip>
@@ -58,8 +58,7 @@
 import * as Vue from 'vue'
 import clipboard from '@/utils/clipboard'
 import svgIcons from './svg-icons'
-import elementIcons from './element-icons'
-import * as elementIconComps from '@element-plus/icons'
+import { elementIcons, elementIconsMap } from './element-icons'
 
 export default {
   name: 'Icons',
@@ -67,6 +66,7 @@ export default {
     return {
       svgIcons,
       elementIcons,
+      elementIconsMap,
     }
   },
   methods: {
@@ -74,7 +74,7 @@ export default {
       return `<svg-icon icon-class="${symbol}" />`
     },
     generateElementIconCode(symbol) {
-      return `<i class="el-icon-${symbol}" />`
+      return `<el-icon><el-${symbol} /></el-icon>`
     },
     handleClipboard(text, event) {
       clipboard(text, event)
