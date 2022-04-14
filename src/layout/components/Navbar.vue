@@ -135,12 +135,12 @@ export default {
     }
 
     .right-menu-item {
-      display: inline-block;
+      display: inline-flex;
       padding: 0 8px;
       height: 100%;
       font-size: 18px;
       color: #5a5e66;
-      vertical-align: text-bottom;
+      align-items: center;
 
       &.hover-effect {
         cursor: pointer;
