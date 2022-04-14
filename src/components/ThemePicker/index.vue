@@ -81,7 +81,7 @@ export default {
       }
 
       if (!this.chalk) {
-        const url = `https://unpkg.com/browse/element-plus@${process.env.ELEMENT_VERSION}/theme-chalk/index.css`
+        const url = `https://unpkg.com/browse/element-plus@${process.env.VUE_APP_ELEMENT_VERSION}/theme-chalk/index.css`
         await this.getCSSString(url, 'chalk')
       }
 
