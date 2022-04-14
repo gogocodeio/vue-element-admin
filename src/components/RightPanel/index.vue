@@ -5,9 +5,12 @@
       <div
         class="handle-button"
         :style="{ top: buttonTop + 'px', 'background-color': theme }"
-        @click="show = !show"
+        @click.stop="show = !show"
       >
-        <i :class="show ? 'el-icon-close' : 'el-icon-setting'" />
+        <el-icon>
+          <el-icon-close v-if="show" />
+          <el-icon-setting v-else />
+        </el-icon>
       </div>
       <div class="rightPanel-items">
         <slot />
@@ -17,7 +20,8 @@
 </template>
 
 <script>
-import * as Vue from 'vue'
+import { Close as ElIconClose, Setting as ElIconSetting} from '@element-plus/icons';
+
 import { addClass, removeClass } from '@/utils'
 
 export default {
@@ -31,6 +35,10 @@ export default {
       default: 250,
       type: Number,
     },
+  },
+  components: {
+    ElIconClose,
+    ElIconSetting,
   },
   data() {
     return {
@@ -134,7 +142,6 @@ export default {
   height: 48px;
   position: absolute;
   left: -48px;
-  text-align: center;
   font-size: 24px;
   border-radius: 6px 0 0 6px !important;
   z-index: 0;
@@ -142,6 +149,9 @@ export default {
   cursor: pointer;
   color: #fff;
   line-height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   i {
     font-size: 24px;
     line-height: 48px;
