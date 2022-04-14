@@ -15,7 +15,7 @@ const name = defaultSettings.title || 'vue Element Admin' // page title
 // port = 9527 npm run dev OR npm run dev --port = 9527
 const port = process.env.port || process.env.npm_config_port || 9527 // dev port
 
-process.env.ELEMENT_VERSION = require('element-plus/package.json').version
+process.env.VUE_APP_ELEMENT_VERSION = require('element-plus/package.json').version
 
 
 // All configuration item explanations can be find in https://cli.vuejs.org/config/
